@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitForge Personal App - Homepage</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- Core Theme Variables --- */
+        :root {
+            --bg-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop'); /* Dark Gym */
+            --overlay-grad: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(17, 24, 39, 0.95));
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --navbar-bg: rgba(0, 0, 0, 0.4);
+            --input-bg: rgba(0, 0, 0, 0.3);
+            --input-text: #ffffff;
+        }
+
+        /* --- Light Theme Overrides --- */
+        body.light-theme {
+            --bg-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop'); /* Bright Fitness Scene */
+            --overlay-grad: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(243, 244, 246, 0.9));
+            --text-main: #111827;
+            --text-muted: #4b5563;
+            --glass-bg: rgba(255, 255, 255, 0.65); /* Frosted White */
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --navbar-bg: rgba(255, 255, 255, 0.85);
+            --input-bg: rgba(255, 255, 255, 0.8);
+            --input-text: #111827;
+        }
+
+        /* --- Base Styles --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            color: var(--text-main); 
+            position: relative;
+            overflow-x: hidden;
+            background-image: var(--bg-image);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            transition: background-image 0.5s ease-in-out;
+        }
+
+        /* Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--overlay-grad);
+            z-index: 0;
+            transition: background 0.5s ease;
+        }
+
+        /* Light Mode Text Overrides for Tailwind classes */
+        body.light-theme .text-white { color: #111827 !important; }
+        body.light-theme .text-gray-300 { color: #374151 !important; }
+        body.light-theme .text-gray-400 { color: #4b5563 !important; }
+        body.light-theme .border-gray-700 { border-color: #d1d5db !important; }
+        body.light-theme footer { background-color: rgba(255,255,255,0.9); border-top-color: #e5e7eb; }
+        body.light-theme .bg-gray-900\/50 { background-color: rgba(255,255,255,0.6); } /* Features cards */
+
+        #app-wrapper {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- Glass Components --- */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.6);
+            box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.3);
+        }
+
+        /* --- Navbar --- */
+        #navbar {
+            background-color: var(--navbar-bg);
+        }
+
+        /* --- Form Elements --- */
+        .input-field {
+            background-color: var(--input-bg);
+            border: 1px solid rgba(75, 85, 99, 0.5);
+            color: var(--input-text);
+            transition: all 0.3s;
+        }
+        .input-field:focus {
+            background-color: var(--input-bg);
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Placeholder color for light mode */
+        body.light-theme ::placeholder {
+            color: #6b7280;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+        }
+        
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Global Firebase Configuration/Initialization (Mandatory Context) -->
+<script type="module">
+    // MANDATORY: Use Canvas environment variables
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+    const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // Initialize Firebase
+    if (Object.keys(firebaseConfig).length > 0) {
+        setLogLevel('Debug');
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        
+        // Authenticate user
+        (async () => {
+            try {
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                console.log("Firebase initialized and user signed in.");
+            } catch (error) {
+                console.error("Firebase Auth Error:", error);
+            }
+        })();
+    } else {
+        console.warn("Firebase configuration not found. Running in standalone mode.");
+    }
+</script>
+
+<div id="app-wrapper" class="flex flex-col min-h-screen">
+    
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Branding -->
+                <div class="flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i class="fas fa-dumbbell text-indigo-500 text-2xl mr-2"></i>
+                    <span class="text-2xl font-black tracking-tighter text-white">FIT<span class="text-indigo-500">FORGE</span></span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-300 hover:text-white text-sm font-semibold tracking-wide transition">FEATURES</a>
+                    <a href="#testimonials" class="text-gray-300 hover:text-white text-sm font-semibold tracking-wide transition">STORIES</a>
+                    <a href="#" class="text-gray-300 hover:text-white text-sm font-semibold tracking-wide transition">CONTACT</a>
+                </div>
+
+                <!-- Auth & Profile -->
+                <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="text-gray-400 hover:text-yellow-400 transition transform hover:rotate-12" title="Toggle Theme">
+                        <i id="theme-icon" class="fas fa-sun text-xl"></i>
+                    </button>
+
+                    <div class="h-6 w-px bg-gray-500 opacity-30"></div>
+
+                    <button class="text-gray-400 hover:text-indigo-400 transition" title="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    
+                    <button id="auth-btn" onclick="toggleAuthView()" class="flex items-center space-x-2 text-indigo-400 hover:text-indigo-600 font-medium transition">
+                        <span id="auth-text">Login</span>
+                        <i id="auth-icon" class="fas fa-sign-in-alt"></i>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden ml-4 text-white text-xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-24">
+        
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 min-h-[80vh] flex flex-col justify-center">
+            
+            <!-- Hero Text -->
+            <div class="text-center mb-12 animate-fade-in-up">
+                <span class="inline-block py-1 px-3 rounded-full bg-indigo-500/20 text-indigo-400 text-xs font-bold tracking-wider mb-4 border border-indigo-500/30">
+                    VERSION 2.0 IS LIVE
+                </span>
+                <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight">
+                    NEVER SKIP <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">WORKOUT DAY.</span>
+                </h1>
+                <p class="max-w-2xl mx-auto text-gray-300 text-lg md:text-xl font-medium">
+                    Your all-in-one companion for tracking gains, managing nutrition, and forging the best version of yourself.
+                </p>
+            </div>
+
+            <!-- Dynamic View Container (Login vs Dashboard) -->
+            <div id="dynamic-content" class="w-full max-w-4xl mx-auto animate-fade-in-up delay-200">
+                
+                <!-- LOGIN CARD -->
+                <div id="login-view" class="view max-w-md mx-auto glass-panel p-8 rounded-2xl relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-600"></div>
+                    
+                    <h2 class="text-2xl font-bold text-white mb-2 text-center">Welcome Back</h2>
+                    <p class="text-gray-400 text-sm text-center mb-8">Enter your credentials to access the forge.</p>
+
+                    <div id="error-message" class="hidden bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-3 rounded-lg text-sm mb-6 flex items-center">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        <span id="error-text">Error message here</span>
+                    </div>
+
+                    <form id="login-form" class="space-y-5">
+                        <div class="group">
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Email Address</label>
+                            <div class="relative">
+                                <i class="fas fa-envelope absolute left-3 top-3.5 text-gray-500 group-focus-within:text-indigo-400 transition-colors"></i>
+                                <input type="email" id="username" class="input-field w-full pl-10 pr-4 py-3 rounded-xl focus:outline-none placeholder-gray-500" placeholder="user@fit.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="group">
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Password</label>
+                            <div class="relative">
+                                <i class="fas fa-lock absolute left-3 top-3.5 text-gray-500 group-focus-within:text-indigo-400 transition-colors"></i>
+                                <input type="password" id="password" class="input-field w-full pl-10 pr-4 py-3 rounded-xl focus:outline-none placeholder-gray-500" placeholder="pass123" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-gradient w-full text-white font-bold py-3.5 rounded-xl shadow-lg mt-2 flex justify-center items-center group">
+                            <span>ENTER FITFORGE</span>
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </form>
+
+                    <div class="mt-6 text-center border-t border-gray-700/50 pt-6">
+                        <p class="text-gray-400 text-sm">No account?</p>
+                        <button onclick="handleRegistration()" class="text-indigo-400 hover:text-indigo-500 text-sm font-semibold hover:underline">
+                            Start your free trial today
+                        </button>
+                    </div>
+                </div>
+
+                <!-- DASHBOARD VIEW (Hidden by default) -->
+                <div id="dashboard-view" class="view hidden">
+                    <div class="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-gray-700/50 pb-4">
+                        <div>
+                            <p class="text-indigo-400 font-semibold tracking-wider text-sm mb-1">DASHBOARD</p>
+                            <h1 class="text-3xl md:text-4xl font-bold text-white">Hello, <span class="text-indigo-500">Abhinay!</span></h1>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-2 md:mt-0 italic font-medium">"Suffer the pain of discipline or suffer the pain of regret."</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <!-- Interactive BMI Card -->
+                        <div onclick="openBMICalculator()" class="glass-card p-6 rounded-2xl cursor-pointer group relative overflow-hidden">
+                            <div class="absolute -right-6 -top-6 w-24 h-24 bg-indigo-500/20 rounded-full blur-xl group-hover:bg-indigo-500/30 transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="w-12 h-12 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-weight text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">BMI Calculator</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed">Calculate your Body Mass Index instantly to track your health category.</p>
+                                <div class="mt-4 flex items-center text-indigo-400 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                                    Launch Tool <i class="fas fa-chevron-right ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Interactive Workout Card -->
+                        <div onclick="showNotification('Workout Planner', 'The visual workout builder is currently under maintenance. Try again later!')" class="glass-card p-6 rounded-2xl cursor-pointer group relative overflow-hidden">
+                            <div class="absolute -right-6 -top-6 w-24 h-24 bg-purple-500/20 rounded-full blur-xl group-hover:bg-purple-500/30 transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-dumbbell text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Workout Planner</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed">Build custom routines, log sets & reps, and visualize your progress over time.</p>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Diet Card -->
+                        <div onclick="showNotification('Calorie Tracker', 'Connect your MyFitnessPal account to sync data automatically.')" class="glass-card p-6 rounded-2xl cursor-pointer group relative overflow-hidden">
+                            <div class="absolute -right-6 -top-6 w-24 h-24 bg-green-500/20 rounded-full blur-xl group-hover:bg-green-500/30 transition-all"></div>
+                            <div class="relative z-10">
+                                <div class="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center text-green-400 mb-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-apple-alt text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Nutrition & Macros</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed">Log meals, track macro-nutrients, and ensure you're fueling your body right.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section (Reveal on Scroll) -->
+        <section id="features" class="py-20 border-t border-gray-700/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl font-bold text-white mb-4">Why Choose FitForge?</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">We combine data science with exercise physiology to give you the most accurate tracking available.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="p-8 rounded-2xl bg-gray-900/50 border border-gray-700/50 hover:border-indigo-500/50 transition duration-300 reveal delay-100">
+                        <i class="fas fa-chart-line text-4xl text-indigo-500 mb-6"></i>
+                        <h3 class="text-xl font-bold text-white mb-3">Real-time Analytics</h3>
+                        <p class="text-gray-400 text-sm">Visualize your strength gains and body composition changes with beautiful interactive charts.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="p-8 rounded-2xl bg-gray-900/50 border border-gray-700/50 hover:border-indigo-500/50 transition duration-300 reveal delay-200">
+                        <i class="fas fa-shield-alt text-4xl text-purple-500 mb-6"></i>
+                        <h3 class="text-xl font-bold text-white mb-3">Secure & Private</h3>
+                        <p class="text-gray-400 text-sm">Your health data is encrypted end-to-end. We never sell your personal information to third parties.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="p-8 rounded-2xl bg-gray-900/50 border border-gray-700/50 hover:border-indigo-500/50 transition duration-300 reveal delay-300">
+                        <i class="fas fa-users text-4xl text-pink-500 mb-6"></i>
+                        <h3 class="text-xl font-bold text-white mb-3">Community Challenges</h3>
+                        <p class="text-gray-400 text-sm">Join monthly leaderboards and challenges to push yourself further with peer motivation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="text-3xl font-bold text-white mb-12 text-center reveal">Forged Athletes</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glass-panel p-8 rounded-2xl reveal delay-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gray-600 rounded-full mr-4 overflow-hidden">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">Sarah Jenkins</h4>
+                                <p class="text-indigo-400 text-xs">Lost 15kg in 6 months</p>
+                            </div>
+                            <div class="ml-auto text-yellow-500 text-sm">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm italic">"The workout planner is a game changer. I used to walk into the gym without a plan, now I know exactly what to do."</p>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-2xl reveal delay-200">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gray-600 rounded-full mr-4 overflow-hidden">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">Mike Ross</h4>
+                                <p class="text-indigo-400 text-xs">Bodybuilder</p>
+                            </div>
+                            <div class="ml-auto text-yellow-500 text-sm">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm italic">"Clean interface, great analytics. The dark mode is perfect for checking logs during late night sessions."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black/80 border-t border-gray-800 py-10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-xl font-black tracking-tighter text-white">FIT<span class="text-indigo-500">FORGE</span></span>
+                <p class="text-gray-500 text-sm mt-1">© 2025 FitForge Inc. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-indigo-500 transition"><i class="fab fa-twitter text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-indigo-500 transition"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-indigo-500 transition"><i class="fab fa-youtube text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- === MODALS === -->
+
+<!-- 1. Notification Modal -->
+<div id="modal-container" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[100] hidden transition-opacity duration-300">
+    <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl shadow-2xl max-w-sm w-full transform scale-95 transition-transform duration-300" id="modal-content-box">
+        <h3 id="modal-title" class="text-xl font-bold text-white mb-2">Notification</h3>
+        <p id="modal-content" class="text-gray-300 mb-6 text-sm leading-relaxed"></p>
+        <button onclick="closeModal()" class="w-full bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2.5 rounded-xl transition">
+            Close
+        </button>
+    </div>
+</div>
+
+<!-- 2. BMI Calculator Modal -->
+<div id="bmi-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[100] hidden">
+    <div class="bg-gray-900 border border-indigo-500/30 p-8 rounded-2xl shadow-2xl max-w-md w-full relative">
+        <button onclick="closeBMIModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fas fa-times"></i></button>
+        
+        <div class="text-center mb-6">
+            <div class="w-12 h-12 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-3 text-indigo-400">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white">BMI Calculator</h3>
+            <p class="text-gray-400 text-sm">Enter your details below</p>
+        </div>
+
+        <div class="space-y-4">
+            <div>
+                <label class="block text-xs text-gray-400 uppercase font-semibold mb-1">Height (cm)</label>
+                <input type="number" id="bmi-height" class="input-field w-full p-3 rounded-lg focus:outline-none" placeholder="e.g. 175">
+            </div>
+            <div>
+                <label class="block text-xs text-gray-400 uppercase font-semibold mb-1">Weight (kg)</label>
+                <input type="number" id="bmi-weight" class="input-field w-full p-3 rounded-lg focus:outline-none" placeholder="e.g. 70">
+            </div>
+            
+            <button onclick="calculateBMI()" class="btn-gradient w-full text-white font-bold py-3 rounded-xl shadow-lg mt-2">
+                Calculate Now
+            </button>
+        </div>
+
+        <!-- Result Area -->
+        <div id="bmi-result" class="hidden mt-6 p-4 rounded-xl bg-gray-800/50 border border-gray-700 text-center animate-fade-in-up">
+            <p class="text-gray-400 text-xs uppercase font-bold">Your BMI is</p>
+            <p class="text-3xl font-black text-white my-1" id="bmi-value">0.0</p>
+            <p class="text-sm font-medium" id="bmi-category">Normal Weight</p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // --- Theme Logic ---
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    // Check Local Storage
+    if (localStorage.getItem('theme') === 'light') {
+        body.classList.add('light-theme');
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+    }
+
+    function toggleTheme() {
+        body.classList.toggle('light-theme');
+        
+        if (body.classList.contains('light-theme')) {
+            localStorage.setItem('theme', 'light');
+            themeIcon.classList.replace('fa-sun', 'fa-moon'); // Switch to Moon icon
+        } else {
+            localStorage.setItem('theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun'); // Switch to Sun icon
+        }
+    }
+
+    // --- Configuration & State ---
+    const MOCK_CREDENTIALS = { user: 'user@fit.com', pass: 'pass123' };
+    let isLoggedIn = false;
+
+    // --- DOM Elements ---
+    const loginView = document.getElementById('login-view');
+    const dashboardView = document.getElementById('dashboard-view');
+    const authBtn = document.getElementById('auth-btn');
+    const authText = document.getElementById('auth-text');
+    const authIcon = document.getElementById('auth-icon');
+    const errorMessage = document.getElementById('error-message');
+
+    // --- Authentication Logic ---
+
+    function updateAuthState(loggedIn) {
+        isLoggedIn = loggedIn;
+        if (loggedIn) {
+            loginView.classList.add('hidden');
+            dashboardView.classList.remove('hidden');
+            dashboardView.classList.add('animate-fade-in-up');
+            
+            authText.textContent = "Logout";
+            authIcon.classList.remove('fa-sign-in-alt');
+            authIcon.classList.add('fa-sign-out-alt');
+        } else {
+            loginView.classList.remove('hidden');
+            dashboardView.classList.add('hidden');
+            
+            authText.textContent = "Login";
+            authIcon.classList.add('fa-sign-in-alt');
+            authIcon.classList.remove('fa-sign-out-alt');
+            
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+        errorMessage.classList.add('hidden');
+    }
+
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const u = document.getElementById('username').value;
+        const p = document.getElementById('password').value;
+
+        if (u === MOCK_CREDENTIALS.user && p === MOCK_CREDENTIALS.pass) {
+            updateAuthState(true);
+            showNotification("Success", "Welcome back, Abhinay! Ready to forge some gains?");
+        } else {
+            document.getElementById('error-text').textContent = "Invalid credentials. Try user@fit.com / pass123";
+            errorMessage.classList.remove('hidden');
+        }
+    });
+
+    function toggleAuthView() {
+        if (isLoggedIn) {
+            updateAuthState(false);
+            showNotification("Logged Out", "See you next workout!");
+        } else {
+            document.getElementById('username').focus();
+        }
+    }
+
+    function handleRegistration() {
+        showNotification("Beta Access", "Registration is currently invite-only. Please use the demo credentials provided.");
+    }
+
+    // --- Interactive Features (BMI Calculator) ---
+
+    function openBMICalculator() {
+        document.getElementById('bmi-modal').classList.remove('hidden');
+        document.getElementById('bmi-result').classList.add('hidden');
+    }
+
+    function closeBMIModal() {
+        document.getElementById('bmi-modal').classList.add('hidden');
+    }
+
+    function calculateBMI() {
+        const h = parseFloat(document.getElementById('bmi-height').value);
+        const w = parseFloat(document.getElementById('bmi-weight').value);
+        const resultBox = document.getElementById('bmi-result');
+        const valueText = document.getElementById('bmi-value');
+        const categoryText = document.getElementById('bmi-category');
+
+        if (!h || !w || h <= 0 || w <= 0) {
+            return; // Basic validation
+        }
+
+        const bmi = (w / ((h / 100) * (h / 100))).toFixed(1);
+        valueText.textContent = bmi;
+        
+        // Determine Category & Color
+        let category = "";
+        let colorClass = "";
+
+        if (bmi < 18.5) {
+            category = "Underweight";
+            colorClass = "text-yellow-400";
+        } else if (bmi < 25) {
+            category = "Normal Weight";
+            colorClass = "text-green-400";
+        } else if (bmi < 30) {
+            category = "Overweight";
+            colorClass = "text-orange-400";
+        } else {
+            category = "Obese";
+            colorClass = "text-red-500";
+        }
+
+        categoryText.textContent = category;
+        categoryText.className = `text-sm font-bold uppercase tracking-wide ${colorClass}`;
+        
+        resultBox.classList.remove('hidden');
+    }
+
+    // --- General Notifications ---
+
+    function showNotification(title, msg) {
+        document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-content').textContent = msg;
+        const container = document.getElementById('modal-container');
+        container.classList.remove('hidden');
+        setTimeout(() => container.classList.remove('opacity-0'), 10);
+    }
+
+    function closeModal() {
+        const container = document.getElementById('modal-container');
+        container.classList.add('opacity-0');
+        setTimeout(() => container.classList.add('hidden'), 300);
+    }
+
+    // --- Scroll Animations ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // --- Init ---
+    window.onload = () => {
+        updateAuthState(false);
+    };
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+.blur {
+    filter: blur(8px);
+    pointer-events: none;      /* prevent clicking behind */
+    user-select: none;
+  }
+  
+  .content {
+    transition: filter 0.3s ease;
+  }
+  .login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .login-box {
+    background: white;
+    width: 420px;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.25);
+  }
+  
+  .login-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: "Anton", sans-serif;
+    letter-spacing: 1px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: 1px solid #bbb;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .form-group input:focus {
+    border-color: #878ECD;
+  }
+  
+  .login-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #878ECD;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+  }
+  
+  .login-btn:hover {
+    transform: scale(1.03);
+    background-color: #7a7ec7;
+  }
+
+  .login-form input {
+    font-family: "Poppins", "Arial", sans-serif !important;
+    text-transform: none !important;
+  }
+
+
+
+  /* Full page background wrapper */
+.signup-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Your purple gradient */
+  padding: 20px;
+}
+
+/* The White Card */
+.signup-card {
+  background: white;
+  width: 100%;
+  max-width: 450px;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.signup-card h2 {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+/* Input Styling */
+input, select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.3s ease;
+  box-sizing: border-box; /* Ensures padding doesn't break width */
+  background-color: #f9f9f9;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #764ba2; /* Purple focus border */
+  background-color: #fff;
+}
+
+/* Grouping for Passwords */
+.row-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* Grid for Age/Weight/Height */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.input-wrapper label {
+  display: block;
+  text-align: left;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+  margin-left: 4px;
+}
+
+/* Grouping Gender & Activity */
+.select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* The Button */
+.signup-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.1s ease;
+}
+
+.signup-btn:hover {
+  background: linear-gradient(to right, #5c0eb3 0%, #1f64db 100%);
+  transform: translateY(-1px);
+}
+
+.footer-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.link {
+    color: #764ba2;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* ---------------------------------------------------- */
+/* NEW DROPDOWN STYLING                                 */
+/* ---------------------------------------------------- */
+
+.signup-card select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  
+  /* Make background white to match text inputs */
+  background-color: #fff; 
+  
+  /* Match the border of your text inputs */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  /* CRITICAL: This removes the ugly grey Mac OS default style */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Since we removed the default style, we need to add a custom arrow */
+  /* This creates a small clean black arrow on the right */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 10px;
+}
+
+/* Hover effect */
+.signup-card select:hover {
+  border-color: #b3b3b3;
+}
+
+/* Focus effect (Purple glow) */
+.signup-card select:focus {
+  outline: none;
+  border-color: #764ba2;
+  box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.1);
+}

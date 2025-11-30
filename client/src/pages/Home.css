@@ -1,0 +1,323 @@
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 40px 10px 40px;
+    background-color: var(--navbar-bg);
+    color: var(--navbar-text);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999; 
+  margin-bottom: 30px;
+  }
+  .appy-container {
+    padding-top: 130px; /* or 140px depending on navbar height */
+  }
+  /* Title / Brand */
+  .title p {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Left side links */
+  .left-navbar {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .left-navbar a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .left-navbar :hover {
+    color: #a8dadc; /* light teal hover */
+  }
+  
+  /* User icon container */
+  .navbar div:last-child {
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .navbar div:last-child:hover {
+    transform: scale(1.1);
+  }
+
+  /* Smooth transition for whole page */
+* {
+    transition: background-color 0.35s ease, 
+                color 0.35s ease,
+                fill 0.35s ease;
+  }
+  
+  /* Theme toggle icon animation */
+  .theme-toggle {
+    margin-left: 5px;
+    cursor: pointer;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  
+  .theme-toggle:active {
+    transform: scale(0.85);
+  }
+  
+  .theme-toggle:hover {
+    transform: scale(1.12);
+  }
+
+  :root[data-theme="light"] {
+    --navbar-bg: #DDE7F2;
+    --navbar-text: #878ECD;
+    --body-bg: #DFF4F3;
+    --body-text: #1e293b;
+
+    /* MODBOX (white cards) */
+    --box-bg: #ffffff;
+    --box-text: #1c1c1c;
+
+    /* Footer variables */
+    --bg-nav: #DDE7F2;
+    --border-color: #cbd5e1;
+    --text-main: #1e293b;
+    --text-muted: #475569;
+    --brand-color: #878ECD;
+
+    --card-glow: 0 20px 40px -5px rgba(99, 102, 241, 0.3);
+}
+:root[data-theme="dark"] {
+  --navbar-bg: #1a1a1a;
+  --navbar-text: #ffffff;
+  --body-bg: #121212;
+  --body-text: #f1f5f9;
+
+  /* MODBOX (dark navy cards) */
+  --box-bg: #2F3356;
+  --box-text: #ECEEFF;
+
+  /* Footer */
+  --bg-nav: #1a1a1a;
+  --border-color: #2d2d2d;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --brand-color: #9ecbff;
+  --card-glow: 0 0 20px rgba(129, 140, 248, 0.6), 0 0 40px rgba(99, 102, 241, 0.2);
+
+}
+
+  .thought-box{
+    height:10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .thought{
+    height:3.5rem;
+    width: 1000px;
+    padding-top:3rem;
+    background:linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+
+    
+  }
+
+  .thought p{
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: white;
+  font-family: Anton;
+
+  }
+
+  .logout-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right:50px;
+  }
+  
+  .logout-btn:hover {
+    background: #c0392b;
+  }
+
+  .logout-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .logout-icon:hover {
+    transform: scale(1.2);
+    color: #e74c3c;
+  }
+
+  .greetbox{
+    margin-left:80px;
+    margin-top:20px;
+  }
+
+  .greet{
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    
+  }
+
+  .Module-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+  .modbox {
+    text-decoration: none;
+    color: var(--box-text);
+    width: 80%;
+    max-width: 350px;
+    height: 180px;
+    border-radius: 22px;
+  
+    background : var(--box-bg);
+    padding: 20px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .modbox:hover {
+    transform: translateY(-10px); 
+    
+    /* Applies the glow variable we made above */
+    box-shadow: var(--card-glow); 
+    
+    /* Adds a colored border */
+    border-color: var(--brand-color); 
+    
+    /* Optional: Changes the cursor so they know it's clickable */
+    cursor: pointer;
+  }
+  .box-title {
+    font-size: 1.8rem;
+    font-family: "Anton";
+    margin: 0 0 5px 0;
+  }
+  
+  .box-desc {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-family: "Poppins";
+    margin: 0;
+  }
+  /* RESET ONLY — do not style layout here */
+/* MAIN PAGE LAYOUT */
+.app-container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--body-bg);
+}
+
+.title p,
+.box-title,
+.greet,
+.thought p {
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.navbar .title p {
+  font-family: "Bebas Neue", sans-serif;
+}
+
+
+
+
+/* --- FOOTER STYLES --- */
+.footer {
+  margin-top: 60px; 
+  background-color: var(--bg-nav);
+  border-top: 1px solid var(--border-color);
+  padding: 3rem 2rem 1.5rem;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.footer-section p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-section a {
+  display: block;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.footer-section a:hover {
+  color: var(--brand-color);
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  font-size: 1.4rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.logout-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+

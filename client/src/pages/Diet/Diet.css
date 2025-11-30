@@ -1,0 +1,226 @@
+/* =========================================
+   1. THEME VARIABLES
+   ========================================= */
+   :root {
+    /* LIGHT MODE DEFAULTS */
+    --bg-body: #e0f2fe;
+    --diet-card-bg: #ffffff; /* Renamed variable to force update */
+    --bg-nav: #ffffff;
+    
+    --text-main: #333333;
+    --text-sub: #666666;
+    --text-muted: #888888;
+    
+    --input-bg: #f9fafb;
+    --input-border: #e5e7eb;
+    
+    --accent: #6a11cb;
+    --brand-color: #6a11cb;
+    
+    --shadow: rgba(0, 0, 0, 0.08);
+    --card-glow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --border-color: #e5e7eb;
+  }
+  
+  /* DARK MODE OVERRIDES */
+  body.dark {
+    --bg-body: #111827;
+    --diet-card-bg: #1f2937; /* Dark Grey Card */
+    --bg-nav: #1f2937;
+    
+    --text-main: #f3f4f6;    /* White Text */
+    --text-sub: #9ca3af;     /* Grey Text */
+    --text-muted: #6b7280;
+    
+    --input-bg: #374151;
+    --input-border: #4b5563;
+    
+    --accent: #a78bfa;
+    --brand-color: #a78bfa;
+    
+    --shadow: rgba(0, 0, 0, 0.5);
+    --card-glow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --border-color: #374151;
+  }
+  
+  /* =========================================
+     2. GLOBAL LAYOUT
+     ========================================= */
+  body {
+    background: var(--bg-body);
+    color: var(--text-main);
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  .diet-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 120px 20px 40px;
+  }
+  
+  /* =========================================
+     3. CARDS (FORCED UPDATE)
+     ========================================= */
+  .diet-card, .diet-box, .diet-graph-box {
+    background-color: var(--diet-card-bg) !important; /* Force Color Apply */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--card-glow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 25px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .diet-card h3, .diet-card h4 {
+    color: var(--text-main);
+    margin-top: 0;
+  }
+  
+  /* Hover effects for interactive boxes */
+  .diet-box:hover, .diet-graph-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--brand-color);
+  }
+  
+  /* =========================================
+     4. NAVBAR
+     ========================================= */
+  .diet-navbar {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    padding: 15px 40px;
+    background: var(--bg-nav);
+    color: var(--text-main);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    box-shadow: 0 2px 15px var(--shadow);
+    box-sizing: border-box;
+  }
+  
+  .diet-brand { font-family: "Bebas Neue", sans-serif; font-size: 2rem; color: var(--brand-color); margin: 0; }
+  .diet-nav-item { text-decoration: none; color: var(--text-main); font-weight: 500; margin-left: 20px; }
+  
+  /* =========================================
+     5. INPUTS & BUTTONS
+     ========================================= */
+  label {
+    color: var(--text-sub);
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    display: block;
+    font-weight: 600;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  input:focus, select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.15);
+  }
+  
+  .action-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: white;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  /* =========================================
+     6. STATS & MEALS
+     ========================================= */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .stat-card {
+    text-align: center;
+    /* Ensure stat cards don't have their own white background overriding the parent */
+    background: transparent; 
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+  
+  /* If stat cards are standalone, the .diet-card class handles the BG. */
+  
+  .big-number { font-size: 2.2rem; font-weight: 800; color: var(--text-main); }
+  .big-number.primary { color: var(--accent); }
+  
+  .badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: #111;
+    display: inline-block;
+    margin-top: 5px;
+  }
+  .badge.normal { background: #86efac; }
+  .badge.underweight { background: #bae6fd; }
+  .badge.overweight { background: #fde047; }
+  .badge.obese { background: #fca5a5; }
+  
+  .meal-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-radius: 10px;
+    background: white;
+    margin-bottom: 10px;
+  }
+  
+  .meal-icon {
+    font-size: 22px;
+    margin-right: 15px;
+  }
+  
+  .meal-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .meal-info span {
+    color: #333 !important;   /* make text visible */
+    font-size: 16px;
+  }
+  
+  /* =========================================
+     7. TEXT & HELPERS
+     ========================================= */
+  .diet-intro h2 { text-align: center; font-size: 2.4rem; font-weight: 800; color: var(--text-main); margin: 0 0 10px 0; }
+  .diet-intro p { text-align: center; color: var(--text-sub); margin-bottom: 30px; }
+  .highlight { color: var(--accent); }
+  
+  /* Footer */
+  .diet-footer {
+    margin-top: 60px;
+    background-color: var(--bg-nav);
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 2rem;
+  }
+  .diet-footer h4 { color: var(--text-main); }
+  .diet-footer p, .diet-footer a { color: var(--text-muted); text-decoration: none; }

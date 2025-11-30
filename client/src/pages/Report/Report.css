@@ -1,0 +1,135 @@
+.Report-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 40px;
+    background: var(--navbar-bg);
+    color: var(--navbar-text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* LEFT */
+  .brand {
+    font-family: "Bebas Neue";
+    font-size: 2.4rem;
+    margin: 0;
+  }
+  
+  /* CENTER */
+  .center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .page-title {
+    font-family: "Bebas Neue";
+    font-size: 2rem;
+    margin: 0;
+    opacity: 0.9;
+  }
+  
+  /* RIGHT */
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  
+  .nav-item {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--navbar-text);
+  }
+  
+  .nav-item:hover {
+    color: #a8dadc;
+  }
+  
+  /* Icons */
+  .nav-icon {
+    cursor: pointer;
+    transition: 0.25s ease;
+  }
+  
+  .nav-icon:hover {
+    transform: scale(1.15);
+  }
+  
+  .logout:hover {
+    color: #e74c3c;
+    transform: scale(1.2);
+  }
+
+  
+
+  .footer {
+    margin-top: 60px; 
+    background-color: var(--bg-nav);
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 2rem 1.5rem;
+    width: 100%;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .footer-section h4 {
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  
+  .footer-section p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .footer-section a {
+    display: block;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    transition: 0.2s;
+  }
+  
+  .footer-section a:hover {
+    color: var(--brand-color);
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 12px;
+    font-size: 1.4rem;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    opacity: 0.9;
+  }
+  
+  .logout-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  
