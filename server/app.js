@@ -1,8 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const chromium = require("chrome-aws-lambda");
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 
 const app = express();
 app.use(express.json());
@@ -982,13 +981,9 @@ const workoutDatabase = {
 }
   // 1. MUSCLE GAIN (BMI < 18.5)
   async function launchBrowser() {
-    const executablePath = await chromium.executablePath;
-  
-    return puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath,
+    return await puppeteer.launch({
       headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
   }
 
