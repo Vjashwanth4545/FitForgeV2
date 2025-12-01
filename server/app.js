@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const puppeteer = require("puppeteer");
+const chromium = require("chrome-aws-lambda");
+const puppeteer = require("puppeteer-core");
 
 const app = express();
 app.use(express.json());
@@ -41,43 +42,7 @@ const User = mongoose.model("User", userSchema, "users");
 const fs = require("fs");
 const path = require("path");
 
-function findChromeExecutable() {
-  const base = "/opt/render/.cache/puppeteer";
 
-  try {
-    if (!fs.existsSync(base)) {
-      console.log("❌ Puppeteer cache folder not found:", base);
-      return null;
-    }
-
-    const folders = fs.readdirSync(base);
-    console.log("📦 Puppeteer cache:", folders);
-
-    for (const folder of folders) {
-      const chromeDir = path.join(base, folder, "chrome");
-
-      if (fs.existsSync(chromeDir)) {
-        const sub = fs.readdirSync(chromeDir);
-
-        for (const s of sub) {
-          const execPath = path.join(chromeDir, s, "chrome-linux64", "chrome");
-
-          if (fs.existsSync(execPath)) {
-            console.log("✅ Chrome found:", execPath);
-            return execPath;
-          }
-        }
-      }
-    }
-
-    console.log("❌ Chrome not found in any folder.");
-    return null;
-
-  } catch (err) {
-    console.error("Chrome lookup error:", err);
-    return null;
-  }
-}
 // ------------------------------------------------------
 //  CALCULATION LOGIC
 // ------------------------------------------------------
@@ -1016,6 +981,16 @@ const workoutDatabase = {
 ]
 }
   // 1. MUSCLE GAIN (BMI < 18.5)
+  async function launchBrowser() {
+    const executablePath = await chromium.executablePath;
+  
+    return puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath,
+      headless: true,
+    });
+  }
 
 // ------------------------------------------------------
 // ROUTES
@@ -1054,35 +1029,25 @@ app.post("/api/generate-report", async (req, res) => {
       user, bmi, bmr, tdee, exercises: safeExercises, totalCalories, plan
     });
 
-    // 5. Generate PDF
-    const chromePath = findChromeExecutable();
-    console.log("🟦 Using Chrome:", chromePath);
-    
-    const browser = await puppeteer.launch({
-      headless: "new",
-      executablePath: chromePath,
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage",
-        "--disable-gpu",
-        "--single-process",
-        "--no-zygote"
-      ]
-    });
-   
-    const page = await browser.newPage();
-    await page.setContent(html, { waitUntil: "networkidle0" });
-    const pdf = await page.pdf({ 
-      format: "A4", 
-      printBackground: true,
-      margin: { top: "20px", bottom: "20px" } 
-    });
-    await browser.close();
 
-    res.setHeader("Content-Type", "application/pdf");
-    res.setHeader("Content-Disposition", `attachment; filename=${username}_report.pdf`);
-    res.send(pdf);
+    
+    // Generate PDF with chrome-aws-lambda
+const browser = await launchBrowser();
+const page = await browser.newPage();
+
+await page.setContent(html, { waitUntil: "networkidle0" });
+
+const pdf = await page.pdf({
+  format: "A4",
+  printBackground: true,
+  margin: { top: "20px", bottom: "20px" }
+});
+
+await browser.close();
+
+res.setHeader("Content-Type", "application/pdf");
+res.setHeader("Content-Disposition", `attachment; filename=${username}_report.pdf`);
+res.send(pdf);
 
   } catch (err) {
     console.error(err);

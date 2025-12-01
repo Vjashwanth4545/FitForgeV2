@@ -5,15 +5,10 @@
     "express": "^5.1.0",
     "mongoose": "^9.0.0",
     "nodemon": "^3.1.11",
-    "pdfkit": "^0.17.2",
-    "puppeteer": "^24.31.0"
+    "chrome-aws-lambda": "^10.1.0",
+    "puppeteer-core": "^21.4.1"
   },
   "scripts": {
-    "start": "node app.js",
-    "postinstall": "puppeteer browsers install chrome"
-  },
-  "puppeteer": {
-    "skipChromeDownload": false
-}
-  
+    "start": "node app.js"
+  }
 }
