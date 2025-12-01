@@ -983,7 +983,7 @@ const workoutDatabase = {
   async function launchBrowser() {
     return await puppeteer.launch({
       headless: "new",
-      executablePath: '/opt/render/.cache/puppeteer/chrome/linux-142.0.7444.175/chrome-linux64/chrome',
+      executablePath: '/opt/render/.cache/puppeteer/chrome/linux-142.0.7444.175/chrome',
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
