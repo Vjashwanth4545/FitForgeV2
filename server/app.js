@@ -983,13 +983,14 @@ const workoutDatabase = {
   async function launchBrowser() {
     return await puppeteer.launch({
       headless: "new",
-      executablePath: '/opt/render/.cache/puppeteer/chrome/linux-142.0.7444.175/chrome',
+      executablePath: '/opt/render/.cache/puppeteer/chrome/linux-142.0.7444.175/chrome-linux64/chrome',
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
         "--disable-gpu",
         "--disable-dev-shm-usage",
-        "--single-process"
+        "--single-process",
+        "--no-zygote"
       ]
     });
   }
