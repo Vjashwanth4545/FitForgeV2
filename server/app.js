@@ -1025,7 +1025,6 @@ app.post("/api/generate-report", async (req, res) => {
         "--no-zygote",
         "--single-process"
       ],
-      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
     });
   
     const page = await browser.newPage();
