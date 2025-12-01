@@ -981,22 +981,17 @@ const workoutDatabase = {
 }
   // 1. MUSCLE GAIN (BMI < 18.5)
   async function launchBrowser() {
-    const executablePath = await puppeteer.executablePath();
-  
-    return await puppeteer.launch({
-      headless: "new",
-      executablePath,
+    const browser = await puppeteer.launch({
+      headless: true,
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
-        "--disable-gpu",
         "--disable-dev-shm-usage",
-        "--disable-software-rasterizer",
-        "--disable-accelerated-2d-canvas",
-        "--no-zygote",
-        "--single-process"
+        "--disable-gpu"
       ]
     });
+  
+    return browser;
   }
 // ------------------------------------------------------
 // ROUTES
