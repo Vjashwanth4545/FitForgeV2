@@ -1017,15 +1017,15 @@ app.post("/api/generate-report", async (req, res) => {
     // 5. Generate PDF
     const browser = await puppeteer.launch({
       headless: true,
-      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+      executablePath: "/opt/render/.cache/puppeteer/chrome/linux-142.0.7444.175/chrome-linux64/chrome",
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
         "--disable-gpu",
         "--disable-dev-shm-usage",
         "--single-process",
-        "--no-zygote",
-      ],
+        "--no-zygote"
+      ]
     });
   
     const page = await browser.newPage();
