@@ -10,11 +10,12 @@ app.use(cors());
 // ------------------------------------------------------
 //  MONGODB CONNECTION
 // ------------------------------------------------------
-const MONGO_URI = "mongodb+srv://jashwanth45454_db_user:p7Lq9Yqw73KRcU7i@cluster7.thdfixf.mongodb.net/Fitforge?retryWrites=true&w=majority";
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.log("❌ DB Error:", err));
+
 
 // ------------------------------------------------------
 //  USER MODEL
@@ -1009,8 +1010,9 @@ app.post("/api/generate-report", async (req, res) => {
 
     // 5. Generate PDF
     const browser = await puppeteer.launch({
-      args: ["--no-sandbox"],
-      headless: true
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || null,
+      headless: "new",
     });
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: "networkidle0" });
@@ -1132,7 +1134,7 @@ app.post("/api/user/profile", async (req, res) => {
     res.json({ success: false, message: "Error loading profile", error: err });
   }
 });
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+  console.log(`🚀 Server running at port ${PORT}`);
 });
