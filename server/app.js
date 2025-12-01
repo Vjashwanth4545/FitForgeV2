@@ -982,8 +982,15 @@ const workoutDatabase = {
   // 1. MUSCLE GAIN (BMI < 18.5)
   async function launchBrowser() {
     return await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      headless: "new",
+      executablePath: '/opt/render/.cache/puppeteer/chrome/linux-142.0.7444.175/chrome-linux64/chrome',
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-gpu",
+        "--disable-dev-shm-usage",
+        "--single-process"
+      ]
     });
   }
 
