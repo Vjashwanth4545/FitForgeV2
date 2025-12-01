@@ -33,7 +33,7 @@ const BMIbody = ({ username }) => {
     async function fetchBMI() {
       try {
         const response = await axios.get(
-          `http://localhost:5001/api/bmi/${username}`
+          `https://fitforgev2.onrender.com/api/bmi/${username}`
         );
 
         if (response.data.success) {

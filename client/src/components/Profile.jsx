@@ -15,7 +15,7 @@ const Profile = ({ username }) => {
   // ----------------------------------------------------
   useEffect(() => {
     axios
-      .post("http://localhost:5001/api/user/profile", { username })
+      .post("https://fitforgev2.onrender.com/api/user/profile", { username })
       .then((res) => {
         if (res.data.success) {
           // save only user fields

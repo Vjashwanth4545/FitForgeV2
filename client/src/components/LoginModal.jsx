@@ -13,7 +13,7 @@ const LoginModal = ({ setIsLoggedIn, setUsername, username }) => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5001/api/login", {
+      const response = await axios.post("https://fitforgev2.onrender.com/api/login", {
         username,
         password,
       });

@@ -13,7 +13,7 @@ export default function DietBody({ username }) {
 
     async function fetchUser() {
       try {
-        const res = await axios.get(`http://localhost:5001/api/diet/${username}`);
+        const res = await axios.get(`https://fitforgev2.onrender.com/api/diet/${username}`);
         const data = res.data;  // FIXED
     
         if (!mounted) return;

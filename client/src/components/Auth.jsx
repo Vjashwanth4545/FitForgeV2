@@ -29,7 +29,7 @@ const Auth = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/login/newuser",
+        "https://fitforgev2.onrender.com/api/login/newuser",
         formData
       );
 

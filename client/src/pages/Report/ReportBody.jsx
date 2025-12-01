@@ -299,7 +299,7 @@ const caloriesMap = {
   
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/generate-report",
+        "https://fitforgev2.onrender.com/api/generate-report",
         {
           username: username,   // <-- sending username only
           exercises: formatted

@@ -19,7 +19,7 @@ export default function WorkoutPlanner({ username }) {
 
     async function load() {
       try {
-        const res = await axios.get(`http://localhost:5001/api/workout/${username}`);
+        const res = await axios.get(`https://fitforgev2.onrender.com/api/workout/${username}`);
         const data = res.data;
 
         if (!mounted) return;
