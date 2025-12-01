@@ -1,12 +1,13 @@
 {
   "dependencies": {
+    "chrome-aws-lambda": "10.1.0",
+    "puppeteer-core": "10.1.0",
     "cloudinary": "^2.8.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "mongoose": "^9.0.0",
     "nodemon": "^3.1.11",
-    "chrome-aws-lambda": "^10.1.0",
-    "puppeteer-core": "^21.4.1"
+    "pdfkit": "^0.17.2"
   },
   "scripts": {
     "start": "node app.js"
