@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const puppeteer = require("puppeteer");
+const pdf = require("html-pdf-node");
 
 const app = express();
 app.use(express.json());
@@ -980,19 +980,7 @@ const workoutDatabase = {
 ]
 }
   // 1. MUSCLE GAIN (BMI < 18.5)
-  async function launchBrowser() {
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage",
-        "--disable-gpu"
-      ]
-    });
-  
-    return browser;
-  }
+
 // ------------------------------------------------------
 // ROUTES
 // ------------------------------------------------------
@@ -1001,60 +989,49 @@ app.post("/api/generate-report", async (req, res) => {
     const { username, exercises } = req.body;
 
     const user = await User.findOne({ username });
-    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+    if (!user) return res.status(404).json({ success: false });
 
-    // 1. Calculations
     const hM = user.height / 100;
     const bmi = +(user.weight / (hM * hM)).toFixed(1);
-    
-    // Defaulting age to 25 and male if not set, for safety
     const age = user.age || 25;
     const gender = user.gender || "male";
-    const bmr = Math.round(calculateBMR(user.weight, user.height, age, gender));
-    const tdee = Math.round(bmr * 1.35); // Moderate activity multiplier default
 
-    // 2. Get Plan
+    const bmr = Math.round(calculateBMR(user.weight, user.height, age, gender));
+    const tdee = Math.round(bmr * 1.35);
+
     const plan = getDetailedPlan(bmi);
 
-    // 3. Process Exercises
-    const safeExercises = Array.isArray(exercises) ? exercises.map((x) => ({
+    const safeExercises = (exercises || []).map(x => ({
       name: x.name || "Unknown",
       minutes: Number(x.minutes) || 0,
       calories: Number(x.calories) || 0
-    })) : [];
+    }));
 
     const totalCalories = safeExercises.reduce((a, b) => a + b.calories, 0);
 
-    // 4. Generate HTML
-    const html = buildHtml({
-      user, bmi, bmr, tdee, exercises: safeExercises, totalCalories, plan
-    });
+    const html = buildHtml({ user, bmi, bmr, tdee, exercises: safeExercises, totalCalories, plan });
 
+    // 🚀 PDF GENERATION (NO BROWSER NEEDED)
+    let file = { content: html };
+    let options = { format: "A4", printBackground: true };
 
-    
-    // Generate PDF with chrome-aws-lambda
-const browser = await launchBrowser();
-const page = await browser.newPage();
+    const pdfBuffer = await pdf.generatePdf(file, options);
 
-await page.setContent(html, { waitUntil: "networkidle0" });
-
-const pdf = await page.pdf({
-  format: "A4",
-  printBackground: true,
-  margin: { top: "20px", bottom: "20px" }
-});
-
-await browser.close();
-
-res.setHeader("Content-Type", "application/pdf");
-res.setHeader("Content-Disposition", `attachment; filename=${username}_report.pdf`);
-res.send(pdf);
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", `attachment; filename=${username}_report.pdf`);
+    res.send(pdfBuffer);
 
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, error: err.toString() });
   }
 });
+
+    
+    // Generate PDF with chrome-aws-lambda
+
+
+
 app.get("/", (req, res) => res.send("Server running ✔"));
 
 // Login

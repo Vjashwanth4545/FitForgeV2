@@ -9,8 +9,8 @@
     "cloudinary": "^2.8.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "html-pdf-node": "^1.0.8",
     "mongoose": "^9.0.0",
     "pdfkit": "^0.17.2",
-    "puppeteer": "^24.31.0"
   }
 }
