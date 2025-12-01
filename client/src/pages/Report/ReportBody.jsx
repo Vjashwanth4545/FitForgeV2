@@ -279,7 +279,7 @@ const caloriesMap = {
   };
 
   const handleSubmit = async () => {
-    if (entries.length < 5) {
+    if (entries.length < 3) {
       alert("Please add at least 5 exercises!");
       return;
     }

@@ -1015,19 +1015,37 @@ app.post("/api/generate-report", async (req, res) => {
     });
 
     // 5. Generate PDF
-    const browser = await puppeteer.launch({
-      headless: true,
-      executablePath: "/opt/render/.cache/puppeteer/chrome/linux-142.0.7444.175/chrome-linux64/chrome",
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-gpu",
-        "--disable-dev-shm-usage",
-        "--single-process",
-        "--no-zygote"
-      ]
-    });
-  
+    const fs = require("fs");
+const chromeBase = "/opt/render/.cache/puppeteer/chrome";
+
+function getChromePath() {
+  try {
+    const folders = fs.readdirSync(chromeBase).filter(f => f.startsWith("linux-"));
+    if (folders.length === 0) return null;
+
+    return `${chromeBase}/${folders[0]}/chrome-linux64/chrome`;
+  } catch (err) {
+    console.error("Chrome lookup error:", err);
+    return null;
+  }
+}
+
+const executablePath = getChromePath();
+console.log("Detected Chrome path:", executablePath);
+
+const browser = await puppeteer.launch({
+  headless: true,
+  executablePath,
+  args: [
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu",
+    "--single-process",
+    "--no-zygote"
+  ]
+});
+   
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: "networkidle0" });
     const pdf = await page.pdf({ 
