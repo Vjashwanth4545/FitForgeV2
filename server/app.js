@@ -336,258 +336,640 @@ function buildHtml({ user, bmi, bmr, tdee, exercises, totalCalories, plan }) {
   </html>`;
 }
 const workoutDatabase = {
+  "muscleGain": [
+    {
+      "day": "Monday",
+      "split": "Push (Chest/Shoulders/Triceps)",
+      "exercises": [
+        {
+          "name": "Barbell Bench Press",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552004/Dumbellbenchpress_iiind2.png",
+          "sets": 4,
+          "reps": "8-10",
+          "rest": "90s"
+        },
+        {
+          "name": "Incline Dumbbell Press",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552012/inclinedDumbbell_Press_mcsloc.jpg",
+          "sets": 3,
+          "reps": "10-12",
+          "rest": "60s"
+        },
+        {
+          "name": "Dumbbell Shoulder Press",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552004/dumbell_shoulder_press_p261jk.png",
+          "sets": 4,
+          "reps": "8-12",
+          "rest": "90s"
+        },
+        {
+          "name": "Lateral Raises",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552014/lateral_raises_mb99ip.png",
+          "sets": 3,
+          "reps": "15",
+          "rest": "45s"
+        },
+        {
+          "name": "Skull Crushers",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552033/skull_crusher_nxumlz.jpg",
+          "sets": 3,
+          "reps": "10-12",
+          "rest": "60s"
+        },
+        {
+          "name": "Tricep Pushdown (Cable)",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552034/tricep_pushdown_ujdwxp.jpg",
+          "sets": 3,
+          "reps": "12-15",
+          "rest": "45s"
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "split": "Pull (Back/Biceps/Rear Delt)",
+      "exercises": [
+        {
+          "name": "Pull-Ups",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552024/pulls_ups_vpyn9q.jpg",
+          "sets": 4,
+          "reps": "6-10",
+          "rest": "120s"
+        },
+        {
+          "name": "Seated Cable Row",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552929/seated_cable_rows_ea5odu.jpg",
+          "sets": 3,
+          "reps": "10-12",
+          "rest": "60s"
+        },
+        {
+          "name": "Face Pulls",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552005/face_pull_a0szxz.jpg",
+          "sets": 4,
+          "reps": "15",
+          "rest": "45s"
+        },
+        {
+          "name": "Barbell Curl",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764551990/barbell_curl_qxm7sm.jpg",
+          "sets": 3,
+          "reps": "10",
+          "rest": "60s"
+        },
+        {
+          "name": "Hammer Curl",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552009/hammer_curls_uyuuaq.jpg",
+          "sets": 3,
+          "reps": "12",
+          "rest": "45s"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Legs & Glutes",
+      "exercises": [
+        {
+          "name": "Barbell Squat",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764551990/barbell_squaat_obmlnt.jpg",
+          "sets": 4,
+          "reps": "6-8",
+          "rest": "120s"
+        },
+        {
+          "name": "Romanian Deadlift",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552027/romanian_deadlift_qbjl3v.jpg",
+          "sets": 4,
+          "reps": "8-10",
+          "rest": "90s"
+        },
+        {
+          "name": "Leg Press",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552016/leg_press_xy1z34.png",
+          "sets": 3,
+          "reps": "10-12",
+          "rest": "90s"
+        },
+        {
+          "name": "Hip Thrust",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552035/trow_bar_dhukxv.jpg",
+          "sets": 4,
+          "reps": "10-12",
+          "rest": "90s"
+        },
+        {
+          "name": "Leg Extension",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552015/leg_extention_hrac4o.png",
+          "sets": 3,
+          "reps": "15",
+          "rest": "45s"
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "split": "Rest",
+      "exercises": []
+    },
+    {
+      "day": "Friday",
+      "split": "Upper Body Pump",
+      "exercises": [
+        {
+          "name": "Dumbbell Bench Press",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552004/Dumbellbenchpress_iiind2.png",
+          "sets": 3,
+          "reps": "10-12",
+          "rest": "60s"
+        },
+        {
+          "name": "Lat Pulldown",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552928/lat_pulldown_bfejcd.jpg",
+          "sets": 3,
+          "reps": "10-12",
+          "rest": "60s"
+        },
+        {
+          "name": "Arnold Press",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764551991/barbell_shoulder_press_la7cue.png",
+          "sets": 3,
+          "reps": "10",
+          "rest": "60s"
+        },
+        {
+          "name": "Pec Deck",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552022/pecDeckMachine_j4mztg.png",
+          "sets": 3,
+          "reps": "15",
+          "rest": "45s"
+        },
+        {
+          "name": "Preacher Curl",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764551998/concentrated_curls_r5saxd.jpg",
+          "sets": 3,
+          "reps": "12",
+          "rest": "45s"
+        }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "split": "Lower Body (Unilateral)",
+      "exercises": [
+        {
+          "name": "Bulgarian Split Squat",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764551991/belarian_split_squat_shu05c.png",
+          "sets": 3,
+          "reps": "10/leg",
+          "rest": "90s"
+        },
+        {
+          "name": "Goblet Squat",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552007/goblet_sqat_xvv1gv.jpg",
+          "sets": 3,
+          "reps": "12",
+          "rest": "60s"
+        },
+        {
+          "name": "Hamstring Curl",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552010/hamstring_curl_o1qo9k.png",
+          "sets": 3,
+          "reps": "12-15",
+          "rest": "45s"
+        },
+        {
+          "name": "Glute Bridge",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552008/hack_machine_suat_xkq5zg.jpg",
+          "sets": 3,
+          "reps": "15",
+          "rest": "45s"
+        }
+      ]
+    },
+    {
+      "day": "Sunday",
+      "split": "Rest",
+      "exercises": []
+    }
+  ],
+  "maintenance": [
+    {
+      "day": "Monday",
+      "split": "Upper Power",
+      "exercises": [
+        {
+          "name": "Bench Press",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552004/Dumbellbenchpress_iiind2.png",
+          "sets": 5,
+          "reps": "5",
+          "rest": "120s"
+        },
+        {
+          "name": "Bent-Over Row",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764551990/barbelbentoverrow_ua9kqk.jpg",
+          "sets": 5,
+          "reps": "5",
+          "rest": "120s"
+        },
+        {
+          "name": "Overhead Press",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552021/overhead_press_u7supu.png",
+          "sets": 3,
+          "reps": "6-8",
+          "rest": "90s"
+        },
+        {
+          "name": "Chest Dips",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764551996/chestDips_nao0uy.jpg",
+          "sets": 3,
+          "reps": "8-10",
+          "rest": "90s"
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "split": "Lower Power",
+      "exercises": [
+        {
+          "name": "Squat",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764551990/barbell_squaat_obmlnt.jpg",
+          "sets": 5,
+          "reps": "5",
+          "rest": "180s"
+        },
+        {
+          "name": "Deadlift",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552027/romanian_deadlift_qbjl3v.jpg",
+          "sets": 3,
+          "reps": "5",
+          "rest": "180s"
+        },
+        {
+          "name": "Leg Press",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552016/leg_press_xy1z34.png",
+          "sets": 3,
+          "reps": "10",
+          "rest": "90s"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Active Recovery",
+      "exercises": [
+        {
+          "name": "Rowing Machine",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552018/machine_row_o5kh5s.jpg",
+          "sets": 1,
+          "reps": "20 min",
+          "rest": "N/A"
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "split": "Upper Hypertrophy",
+      "exercises": [
+        {
+          "name": "Incline Dumbbell Press",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552012/inclinedDumbbell_Press_mcsloc.jpg",
+          "sets": 3,
+          "reps": "10",
+          "rest": "60s"
+        },
+        {
+          "name": "Lat Pulldown",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552928/lat_pulldown_bfejcd.jpg",
+          "sets": 3,
+          "reps": "10-12",
+          "rest": "60s"
+        },
+        {
+          "name": "Lateral Raises",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552014/lateral_raises_mb99ip.png",
+          "sets": 3,
+          "reps": "15",
+          "rest": "45s"
+        },
+        {
+          "name": "Cable Curl",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764551991/cabel_curl_xvghlr.jpg",
+          "sets": 3,
+          "reps": "12",
+          "rest": "45s"
+        },
+        {
+          "name": "Rope Pushdown",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552028/rope_pulldown_qrhiii.jpg",
+          "sets": 3,
+          "reps": "12",
+          "rest": "45s"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Lower Hypertrophy",
+      "exercises": [
+        {
+          "name": "Lunges",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552017/luges_afwu7d.png",
+          "sets": 3,
+          "reps": "12/leg",
+          "rest": "60s"
+        },
+        {
+          "name": "RDL",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552027/romanian_deadlift_qbjl3v.jpg",
+          "sets": 3,
+          "reps": "10",
+          "rest": "90s"
+        },
+        {
+          "name": "Leg Extension",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552015/leg_extention_hrac4o.png",
+          "sets": 3,
+          "reps": "15",
+          "rest": "45s"
+        },
+        {
+          "name": "Cable Kickback",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552028/rear_delt_fly_dumbell_ocswiz.png",
+          "sets": 3,
+          "reps": "15/leg",
+          "rest": "45s"
+        }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "split": "Core & Functional",
+      "exercises": [
+        {
+          "name": "Plank",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552022/plank_bo0fg8.jpg",
+          "sets": 3,
+          "reps": "60s",
+          "rest": "60s"
+        },
+        {
+          "name": "Farmer’s Walk",
+          "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552009/hammer_curls_uyuuaq.jpg",
+          "sets": 3,
+          "reps": "30m",
+          "rest": "60s"
+        }
+      ]
+    },
+    {
+      "day": "Sunday",
+      "split": "Rest",
+      "exercises": []
+    }
+  ],
+  
+  "fatLoss": [
+  {
+    "day": "Monday",
+    "split": "Metabolic Circuit A",
+    "exercises": [
+      {
+        "name": "Push-Ups",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552026/pushups_lzylvl.png",
+        "sets": 4,
+        "reps": "AMRAP"
+      },
+      {
+        "name": "Kettlebell Swing",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552006/front_raises_j4iwrn.png",
+        "sets": 4,
+        "reps": "20"
+      },
+      {
+        "name": "Mountain Climbers",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552010/hanging_knee_raise_mhybph.jpg",
+        "sets": 4,
+        "reps": "40s"
+      }
+    ]
+  },
+
+  {
+    "day": "Tuesday",
+    "split": "Cardio",
+    "exercises": [
+      {
+        "name": "Rowing Machine",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552018/machine_row_o5kh5s.jpg",
+        "sets": 1,
+        "reps": "30 min"
+      }
+    ]
+  },
+
+  {
+    "day": "Wednesday",
+    "split": "Full Body Strength",
+    "exercises": [
+      {
+        "name": "Thrusters",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552006/front_raises_j4iwrn.png",
+        "sets": 3,
+        "reps": "12"
+      },
+      {
+        "name": "Lunges",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552017/luges_afwu7d.png",
+        "sets": 3,
+        "reps": "12",
+        "rest": "45s"
+      }
+    ]
+  },
+
+  {
+    "day": "Thursday",
+    "split": "HIIT",
+    "exercises": [
+      {
+        "name": "Battle Rope",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552028/rope_pulldown_qrhiii.jpg",
+        "sets": 5,
+        "reps": "30s on/30s off"
+      },
+      {
+        "name": "Burpees",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552026/pushups_lzylvl.png",
+        "sets": 5,
+        "reps": "10"
+      }
+    ]
+  },
+
+  {
+    "day": "Friday",
+    "split": "Metabolic Circuit B",
+    "exercises": [
+      {
+        "name": "Box Jump",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552006/front_raises_j4iwrn.png",
+        "sets": 4,
+        "reps": "12"
+      },
+      {
+        "name": "Step-Ups",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552016/leg_rises_ycrkyi.jpg",
+        "sets": 4,
+        "reps": "12/leg"
+      },
+      {
+        "name": "Clean & Press",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552021/overhead_press_u7supu.png",
+        "sets": 3,
+        "reps": "10"
+      }
+    ]
+  },
+
+  {
+    "day": "Saturday",
+    "split": "Active",
+    "exercises": [
+      {
+        "name": "Ski Erg",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552017/luges_afwu7d.png",
+        "sets": 1,
+        "reps": "20 min"
+      }
+    ]
+  },
+
+  {
+    "day": "Sunday",
+    "split": "Rest",
+    "exercises": []
+  },
+
+],
+"lowImpact": [
+  {
+    "day": "Monday",
+    "split": "Machine Strength",
+    "exercises": [
+      {
+        "name": "Machine Chest Press",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552020/machne_chest_press_fsm1xw.png",
+        "sets": 3,
+        "reps": "12"
+      },
+      {
+        "name": "Machine Row",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552018/machine_row_o5kh5s.jpg",
+        "sets": 3,
+        "reps": "12"
+      },
+      {
+        "name": "Leg Press",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552016/leg_press_xy1z34.png",
+        "sets": 3,
+        "reps": "10"
+      },
+      {
+        "name": "Glute Bridge",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552008/hack_machine_suat_xkq5zg.jpg",
+        "sets": 3,
+        "reps": "12"
+      }
+    ]
+  },
+  {
+    "day": "Tuesday",
+    "split": "Cardio",
+    "exercises": [
+      {
+        "name": "Rowing Machine",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552018/machine_row_o5kh5s.jpg",
+        "sets": 1,
+        "reps": "15 min"
+      }
+    ]
+  },
+  {
+    "day": "Wednesday",
+    "split": "Functional Core",
+    "exercises": [
+      {
+        "name": "Plank",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552022/plank_bo0fg8.jpg",
+        "sets": 3,
+        "reps": "20-30s"
+      },
+      {
+        "name": "Banded Side Walk",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552028/rear_delt_fly_dumbell_ocswiz.png",
+        "sets": 3,
+        "reps": "10 steps"
+      },
+      {
+        "name": "Straight Arm Pulldown",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552034/straight-arm-lat-pulldowns_tj6bys.jpg",
+        "sets": 3,
+        "reps": "12"
+      }
+    ]
+  },
+  {
+    "day": "Thursday",
+    "split": "Rest",
+    "exercises": []
+  },
+  {
+    "day": "Friday",
+    "split": "Full Body Support",
+    "exercises": [
+      {
+        "name": "Machine Shoulder Press",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552930/shoulder_press_quma9o.jpg",
+        "sets": 3,
+        "reps": "12"
+      },
+      {
+        "name": "Lat Pulldown",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552928/lat_pulldown_bfejcd.jpg",
+        "sets": 3,
+        "reps": "10"
+      },
+      {
+        "name": "Smith Machine Squat",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764551990/barbell_squaat_obmlnt.jpg",
+        "sets": 3,
+        "reps": "10"
+      }
+    ]
+  },
+  {
+    "day": "Saturday",
+    "split": "Light Active",
+    "exercises": [
+      {
+        "name": "Ski Erg",
+        "img": "https://res.cloudinary.com/db361cin2/image/upload/v1764552017/luges_afwu7d.png",
+        "sets": 1,
+        "reps": "10 min"
+      }
+    ]
+  },
+  {
+    "day": "Sunday",
+    "split": "Rest",
+    "exercises": []
+  }
+]
+}
   // 1. MUSCLE GAIN (BMI < 18.5)
-  muscleGain: [
-    {
-      day: "Monday",
-      split: "Push (Chest/Shoulders/Triceps)",
-      exercises: [
-        { name: "Barbell Bench Press", img: "benchpress.jpeg", sets: 4, reps: "8-10", rest: "90s" },
-        { name: "Incline Dumbbell Press", img: "inclinedDumbbellPress.jpeg", sets: 3, reps: "10-12", rest: "60s" },
-        { name: "Dumbbell Shoulder Press", img: "dumbell shoulder press.png", sets: 4, reps: "8-12", rest: "90s" },
-        { name: "Lateral Raises", img: "lateral raises.png", sets: 3, reps: "15", rest: "45s" },
-        { name: "Skull Crushers", img: "skull crusher.jpg", sets: 3, reps: "10-12", rest: "60s" },
-        { name: "Tricep Pushdown (Cable)", img: "tricep pushdown.jpg", sets: 3, reps: "12-15", rest: "45s" }
-      ]
-    },
 
-    {
-      day: "Tuesday",
-      split: "Pull (Back/Biceps/Rear Delt)",
-      exercises: [
-        { name: "Pull-Ups", img: "pulls ups.jpg", sets: 4, reps: "6-10", rest: "120s" },
-        { name: "Seated Cable Row", img: "seated cable rows.jpg", sets: 3, reps: "10-12", rest: "60s" },
-        { name: "Face Pulls", img: "face pull.jpeg", sets: 4, reps: "15", rest: "45s" },
-        { name: "Barbell Curl", img: "barbell curl.jpg", sets: 3, reps: "10", rest: "60s" },
-        { name: "Hammer Curl", img: "hammer curls.jpg", sets: 3, reps: "12", rest: "45s" }
-      ]
-    },
-
-    {
-      day: "Wednesday",
-      split: "Legs & Glutes",
-      exercises: [
-        { name: "Barbell Squat", img: "barbell squaat.jpeg", sets: 4, reps: "6-8", rest: "120s" },
-        { name: "Romanian Deadlift", img: "romanian deadlift.jpeg", sets: 4, reps: "8-10", rest: "90s" },
-        { name: "Leg Press", img: "leg press.png", sets: 3, reps: "10-12", rest: "90s" },
-        { name: "Hip Thrust", img: "trow bar.jpg", sets: 4, reps: "10-12", rest: "90s" },
-        { name: "Leg Extension", img: "leg extention.png", sets: 3, reps: "15", rest: "45s" }
-      ]
-    },
-
-    { day: "Thursday", split: "Rest", exercises: [] },
-
-    {
-      day: "Friday",
-      split: "Upper Body Pump",
-      exercises: [
-        { name: "Dumbbell Bench Press", img: "Dumbellbenchpress.png", sets: 3, reps: "10-12", rest: "60s" },
-        { name: "Lat Pulldown", img: "lat pulldown.jpg", sets: 3, reps: "10-12", rest: "60s" },
-        { name: "Arnold Press", img: "barbell shoulder press.png", sets: 3, reps: "10", rest: "60s" },
-        { name: "Pec Deck", img: "pecDeckMachine.png", sets: 3, reps: "15", rest: "45s" },
-        { name: "Preacher Curl", img: "concentrated curls.jpg", sets: 3, reps: "12", rest: "45s" }
-      ]
-    },
-
-    {
-      day: "Saturday",
-      split: "Lower Body (Unilateral)",
-      exercises: [
-        { name: "Bulgarian Split Squat", img: "belarian split squat.png", sets: 3, reps: "10/leg", rest: "90s" },
-        { name: "Goblet Squat", img: "goblet sqat.jpeg", sets: 3, reps: "12", rest: "60s" },
-        { name: "Hamstring Curl", img: "hamstring curl.png", sets: 3, reps: "12-15", rest: "45s" },
-        { name: "Glute Bridge", img: "hack_machine suat.jpeg", sets: 3, reps: "15", rest: "45s" }
-      ]
-    },
-
-    { day: "Sunday", split: "Rest", exercises: [] }
-  ],
-
-  // 2. MAINTENANCE (18.5–24.9)
-  maintenance: [
-    {
-      day: "Monday",
-      split: "Upper Power",
-      exercises: [
-        { name: "Bench Press", img: "benchpress.jpeg", sets: 5, reps: "5", rest: "120s" },
-        { name: "Bent-Over Row", img: "barbelbentoverrow.jpg", sets: 5, reps: "5", rest: "120s" },
-        { name: "Overhead Press", img: "overhead press.png", sets: 3, reps: "6-8", rest: "90s" },
-        { name: "Chest Dips", img: "chestDips.jpg", sets: 3, reps: "8-10", rest: "90s" }
-      ]
-    },
-
-    {
-      day: "Tuesday",
-      split: "Lower Power",
-      exercises: [
-        { name: "Squat", img: "barbell squaat.jpeg", sets: 5, reps: "5", rest: "180s" },
-        { name: "Deadlift", img: "deadlift.jpg", sets: 3, reps: "5", rest: "180s" },
-        { name: "Leg Press", img: "leg press.png", sets: 3, reps: "10", rest: "90s" }
-      ]
-    },
-
-    {
-      day: "Wednesday",
-      split: "Active Recovery",
-      exercises: [
-        { name: "Rowing Machine", img: "machine row.jpg", sets: 1, reps: "20 min", rest: "N/A" }
-      ]
-    },
-
-    {
-      day: "Thursday",
-      split: "Upper Hypertrophy",
-      exercises: [
-        { name: "Incline Dumbbell Press", img: "inclinedDumbbell Press.jpeg", sets: 3, reps: "10", rest: "60s" },
-        { name: "Lat Pulldown", img: "lat pulldown.jpg", sets: 3, reps: "10-12", rest: "60s" },
-        { name: "Lateral Raises", img: "lateral raises.png", sets: 3, reps: "15", rest: "45s" },
-        { name: "Cable Curl", img: "cabel curl.jpg", sets: 3, reps: "12", rest: "45s" },
-        { name: "Rope Pushdown", img: "rope pulldown.jpg", sets: 3, reps: "12", rest: "45s" }
-      ]
-    },
-
-    {
-      day: "Friday",
-      split: "Lower Hypertrophy",
-      exercises: [
-        { name: "Lunges", img: "luges.png", sets: 3, reps: "12/leg", rest: "60s" },
-        { name: "RDL", img: "romanian deadlift.jpeg", sets: 3, reps: "10", rest: "90s" },
-        { name: "Leg Extension", img: "leg extention.png", sets: 3, reps: "15", rest: "45s" },
-        { name: "Cable Kickback", img: "rear delt fly (dumbell).png", sets: 3, reps: "15/leg", rest: "45s" }
-      ]
-    },
-
-    {
-      day: "Saturday",
-      split: "Core & Functional",
-      exercises: [
-        { name: "Plank", img: "plank.jpg", sets: 3, reps: "60s", rest: "60s" },
-        { name: "Farmer’s Walk", img: "hammer curls.jpg", sets: 3, reps: "30m", rest: "60s" }
-      ]
-    },
-
-    { day: "Sunday", split: "Rest", exercises: [] }
-  ],
-
-  // 3. FAT LOSS (25–29.9)
-  fatLoss: [
-    {
-      day: "Monday",
-      split: "Metabolic Circuit A",
-      exercises: [
-        { name: "Goblet Squat", img: "goblet sqt.jpeg", sets: 4, reps: "15" },
-        { name: "Push-Ups", img: "pushups.png", sets: 4, reps: "AMRAP" },
-        { name: "Kettlebell Swing", img: "front raises.png", sets: 4, reps: "20" },
-        { name: "Mountain Climbers", img: "hanging knee raise.jpg", sets: 4, reps: "40s" }
-      ]
-    },
-
-    {
-      day: "Tuesday",
-      split: "Cardio",
-      exercises: [
-        { name: "Rowing Machine", img: "machine row.jpg", sets: 1, reps: "30 min" }
-      ]
-    },
-
-    {
-      day: "Wednesday",
-      split: "Full Body Strength",
-      exercises: [
-        { name: "Thrusters", img: "front raises.png", sets: 3, reps: "12" },
-        { name: "Dumbbell Row", img: "dembell row.jpg", sets: 3, reps: "12" },
-        { name: "Lunges", img: "luges.png", sets: 3, reps: "12", rest: "45s" },
-        { name: "Russian Twist", img: "bicycle crushes.jpg", sets: 3, reps: "20" }
-      ]
-    },
-
-    {
-      day: "Thursday",
-      split: "HIIT",
-      exercises: [
-        { name: "Battle Rope", img: "rope pulldown.jpg", sets: 5, reps: "30s on/30s off" },
-        { name: "Burpees", img: "pushups.png", sets: 5, reps: "10" }
-      ]
-    },
-
-    {
-      day: "Friday",
-      split: "Metabolic Circuit B",
-      exercises: [
-        { name: "Box Jump", img: "front raises.png", sets: 4, reps: "12" },
-        { name: "Step-Ups", img: "leg rises.jpg", sets: 4, reps: "12/leg" },
-        { name: "Clean & Press", img: "overhead press.png", sets: 3, reps: "10" },
-        { name: "Bicycle Crunch", img: "bicycle crushes.jpg", sets: 3, reps: "30" }
-      ]
-    },
-
-    {
-      day: "Saturday",
-      split: "Active",
-      exercises: [
-        { name: "Ski Erg", img: "luges.png", sets: 1, reps: "20 min" }
-      ]
-    },
-
-    { day: "Sunday", split: "Rest", exercises: [] }
-  ],
-
-  // 4. OBESE (> 30)
-  lowImpact: [
-    {
-      day: "Monday",
-      split: "Machine Strength",
-      exercises: [
-        { name: "Machine Chest Press", img: "machne chest press.png", sets: 3, reps: "12" },
-        { name: "Machine Row", img: "machine row.jpg", sets: 3, reps: "12" },
-        { name: "Leg Press", img: "leg press.png", sets: 3, reps: "10" },
-        { name: "Glute Bridge", img: "hack_machine suat.jpeg", sets: 3, reps: "12" }
-      ]
-    },
-
-    {
-      day: "Tuesday",
-      split: "Cardio",
-      exercises: [
-        { name: "Rowing Machine", img: "machine row.jpg", sets: 1, reps: "15 min" }
-      ]
-    },
-
-    {
-      day: "Wednesday",
-      split: "Functional Core",
-      exercises: [
-        { name: "Plank", img: "plank.jpg", sets: 3, reps: "20-30s" },
-        { name: "Banded Side Walk", img: "rear delt fly (dumbell).png", sets: 3, reps: "10 steps" },
-        { name: "Straight Arm Pulldown", img: "straight-arm-lat-pulldowns.jpg", sets: 3, reps: "12" },
-        { name: "Step-Ups", img: "leg rises.jpg", sets: 3, reps: "8/leg" }
-      ]
-    },
-
-    { day: "Thursday", split: "Rest", exercises: [] },
-
-    {
-      day: "Friday",
-      split: "Full Body Support",
-      exercises: [
-        { name: "Machine Shoulder Press", img: "shoulder press.jpg", sets: 3, reps: "12" },
-        { name: "Lat Pulldown", img: "lat pulldown.jpg", sets: 3, reps: "10" },
-        { name: "Smith Machine Squat", img: "barbell squaat.jpeg", sets: 3, reps: "10" },
-        { name: "Face Pulls", img: "face pull.jpeg", sets: 3, reps: "15" }
-      ]
-    },
-
-    {
-      day: "Saturday",
-      split: "Light Active",
-      exercises: [
-        { name: "Ski Erg", img: "luges.png", sets: 1, reps: "10 min" }
-      ]
-    },
-
-    { day: "Sunday", split: "Rest", exercises: [] }
-  ]
-};
 // ------------------------------------------------------
 // ROUTES
 // ------------------------------------------------------

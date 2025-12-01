@@ -31,8 +31,10 @@ export default function WorkoutPlanner({ username }) {
 
         setPlan({
           bmi: data.bmi,
-          goal: data.planType,
-          level: data.planType,
+          goal: data.bmi < 18.5 ? "Muscle Gain" :
+                data.bmi < 25 ? "Maintenance" :
+                data.bmi < 30 ? "Fat Loss" : "Low Impact",
+          level: "Weekly Plan",
           days: data.plan
         });
 
@@ -75,7 +77,7 @@ export default function WorkoutPlanner({ username }) {
         </header>
 
         <div className="workout-grid">
-          {plan.days.map((day, idx) => (
+        {Array.isArray(plan.days) && plan.days.map((day, idx) => ( 
             <div
               key={idx}
               className={`workout-card ${day.split === "Rest" ? "rest-day" : ""}`}
@@ -124,10 +126,10 @@ export default function WorkoutPlanner({ username }) {
             <h2>{selectedExercise.name}</h2>
 
             <img
-              src={`/workout/${selectedExercise.img}`}
-              alt={selectedExercise.name}
-              className="exercise-img"
-            />
+  src={selectedExercise.img}
+  alt={selectedExercise.name}
+  className="exercise-img"
+/>
 
             <div className="exercise-details">
               <p><strong>Sets:</strong> {selectedExercise.sets}</p>
