@@ -11,6 +11,9 @@
   "scripts": {
     "start": "node app.js",
     "postinstall": "puppeteer browsers install chrome"
-  }
+  },
+  "puppeteer": {
+    "skipChromeDownload": false
+}
   
 }

@@ -13,6 +13,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 // ------------------------------------------------------
 //  MONGODB CONNECTION
 // ------------------------------------------------------
@@ -37,7 +38,46 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("User", userSchema, "users");
+const fs = require("fs");
+const path = require("path");
 
+function findChromeExecutable() {
+  const base = "/opt/render/.cache/puppeteer";
+
+  try {
+    if (!fs.existsSync(base)) {
+      console.log("❌ Puppeteer cache folder not found:", base);
+      return null;
+    }
+
+    const folders = fs.readdirSync(base);
+    console.log("📦 Puppeteer cache:", folders);
+
+    for (const folder of folders) {
+      const chromeDir = path.join(base, folder, "chrome");
+
+      if (fs.existsSync(chromeDir)) {
+        const sub = fs.readdirSync(chromeDir);
+
+        for (const s of sub) {
+          const execPath = path.join(chromeDir, s, "chrome-linux64", "chrome");
+
+          if (fs.existsSync(execPath)) {
+            console.log("✅ Chrome found:", execPath);
+            return execPath;
+          }
+        }
+      }
+    }
+
+    console.log("❌ Chrome not found in any folder.");
+    return null;
+
+  } catch (err) {
+    console.error("Chrome lookup error:", err);
+    return null;
+  }
+}
 // ------------------------------------------------------
 //  CALCULATION LOGIC
 // ------------------------------------------------------
@@ -1015,36 +1055,21 @@ app.post("/api/generate-report", async (req, res) => {
     });
 
     // 5. Generate PDF
-    const fs = require("fs");
-const chromeBase = "/opt/render/.cache/puppeteer/chrome";
-
-function getChromePath() {
-  try {
-    const folders = fs.readdirSync(chromeBase).filter(f => f.startsWith("linux-"));
-    if (folders.length === 0) return null;
-
-    return `${chromeBase}/${folders[0]}/chrome-linux64/chrome`;
-  } catch (err) {
-    console.error("Chrome lookup error:", err);
-    return null;
-  }
-}
-
-const executablePath = getChromePath();
-console.log("Detected Chrome path:", executablePath);
-
-const browser = await puppeteer.launch({
-  headless: true,
-  executablePath,
-  args: [
-    "--no-sandbox",
-    "--disable-setuid-sandbox",
-    "--disable-dev-shm-usage",
-    "--disable-gpu",
-    "--single-process",
-    "--no-zygote"
-  ]
-});
+    const chromePath = findChromeExecutable();
+    console.log("🟦 Using Chrome:", chromePath);
+    
+    const browser = await puppeteer.launch({
+      headless: "new",
+      executablePath: chromePath,
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--single-process",
+        "--no-zygote"
+      ]
+    });
    
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: "networkidle0" });
