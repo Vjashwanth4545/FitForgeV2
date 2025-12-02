@@ -13,7 +13,7 @@ function Modules() {
 
       <Link to="/workout" className="modbox">
         <p className="box-title">Workout Planner
-        <FontAwesomeIcon icon={faDumbbell} style={{ marginLeft: "58px" }} />
+        <FontAwesomeIcon icon={faDumbbell} style={{ marginLeft: "64px" }} />
         </p>
         <p className="box-desc">Customize your daily routine and log your sets and reps.</p>
       </Link>
