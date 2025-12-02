@@ -64,7 +64,27 @@ export default function DietBody({ username }) {
       mounted = false;
     };
   }, [username]);
-
+  const getActivityText = (level) => {
+    const n = Number(level);
+  
+    if (n >= 1 && n < 1.25) {
+      return "Sedentary (Little or no exercise)";
+    } 
+    else if (n >= 1.25 && n < 1.45) {
+      return "Light (1–3 days/week)";
+    } 
+    else if (n >= 1.45 && n < 1.65) {
+      return "Moderate (3–5 days/week)";
+    } 
+    else if (n >= 1.65 && n < 1.85) {
+      return "Active (6–7 days/week)";
+    } 
+    else if (n >= 1.85 && n <= 2.1) {
+      return "Very Active (Intense daily training)";
+    }
+  
+    return "Unknown Activity Level";
+  };
   const calculatePlan = (u) => {
     const { age, gender, height, weight, activityLevel } = u;
 
@@ -162,7 +182,7 @@ export default function DietBody({ username }) {
           <p><strong>Age:</strong> {user.age} years</p>
           <p><strong>Height:</strong> {user.height} cm</p>
           <p><strong>Weight:</strong> {user.weight} kg</p>
-          <p><strong>Activity Level:</strong> {user.activityLevel}</p>
+          <p><strong>Activity Level:</strong> {getActivityText(user.activityLevel)}</p>
         </div>
       </div>
 
