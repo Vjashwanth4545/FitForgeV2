@@ -52,7 +52,7 @@ const Profile = ({ username }) => {
   const handleUpdate = async () => {
     try {
       const res = await axios.put(
-        "http://localhost:5001/api/user/update",
+        "https://fitforgev2.onrender.com/api/user/update",
         editableData
       );
 
