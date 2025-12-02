@@ -8,7 +8,7 @@ function Modules() {
 
       <Link to="/bmi" className="modbox">
         <p className="box-title">BMI
-        <FontAwesomeIcon icon={faGaugeHigh} style={{ marginLeft: "155px" }} />
+        <FontAwesomeIcon icon={faGaugeHigh} style={{ marginLeft: "185px" }} />
         </p>
         <p className="box-desc">Analyze your body mass index to track your health progress.</p>
       </Link>
