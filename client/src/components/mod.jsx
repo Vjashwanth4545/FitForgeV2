@@ -18,7 +18,7 @@ function Modules() {
 
       <Link to="/diet" className="modbox">
         <p className="box-title">Diet Planner 
-        <FontAwesomeIcon icon={faUtensils} style={{ marginLeft: "25px" }} />
+        <FontAwesomeIcon icon={faUtensils} style={{ marginLeft: "75px" }} />
         </p>
         <p className="box-desc">Log your meals and monitor your daily caloric intake.</p>
       </Link>
