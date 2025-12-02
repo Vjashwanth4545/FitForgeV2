@@ -186,12 +186,15 @@
     gap: 50px;
     margin-top: 30px;
 
-    grid-template-columns: repeat(1, 1fr); /* mobile */
+    justify-content: center; /* <-- CENTER THE WHOLE GRID */
+    align-items: start;
+
+    grid-template-columns: repeat(1, 350px); /* fixed card width */
 }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
     .Module-box {
-        grid-template-columns: repeat(2, 1fr); /* ALWAYS 2 columns */
+        grid-template-columns: repeat(2, 350px); /* ALWAYS 2 columns */
     }
 }
   .modbox {
