@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function BMIGauge({ bmi = null, width = "100%", height = "50px" }) {
+export default function BMIGauge({ bmi = null, width = "100%", height = "80px" }) {
   const maxBMI = 40;
   const value = Math.min(Math.max(bmi || 0, 0), maxBMI);
   const percent = (value / maxBMI) * 100;
@@ -23,14 +23,14 @@ export default function BMIGauge({ bmi = null, width = "100%", height = "50px" }
 
   return (
     <div
-      style={{
-        width,
-        maxWidth: "650px",
-        margin: "0 auto",
-        padding: "10px 0 25px",
-        position: "relative",
-      }}
-    >
+    style={{
+      width: "100%",
+      maxWidth: "850px",
+      margin: "0 auto",
+      padding: "20px 0 35px",
+      position: "relative",
+    }}
+  >
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
         <div style={{ fontFamily: "Bebas Neue", fontSize: 22, color: "#7c3aed" }}>
           {bmi?.toFixed(2)} kg/m²
