@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils,faNewspaper,faDumbbell} from "@fortawesome/free-solid-svg-icons";  
+import { faUtensils,faNewspaper,faDumbbell,faGaugeHigh} from "@fortawesome/free-solid-svg-icons";  
 
 function Modules() {
   return (
     <div className='Module-box'>
 
       <Link to="/bmi" className="modbox">
-        <p className="box-title">BMI</p>
+        <p className="box-title">BMI
+        <FontAwesomeIcon icon={faGaugeHigh} style={{ marginLeft: "95px" }} />
+        </p>
         <p className="box-desc">Analyze your body mass index to track your health progress.</p>
       </Link>
 
