@@ -10,10 +10,10 @@ export default function BMIGauge({ bmi = null, width = "100%", height = "50px" }
 
   // WHO ranges
   const ranges = [
-    { label: "Under", min: 0, max: 18.5, color: "#a78bfa" },
-    { label: "Fit", min: 18.5, max: 25, color: "#7c3aed" },
-    { label: "Over", min: 25, max: 30, color: "#a855f7" },
-    { label: "Obese", min: 30, max: 40, color: "#ff6b6b" },
+    { label: "Under", min: 0, max: 18.5, color: "#a78bfa" }, // soft purple
+    { label: "Fit", min: 18.5, max: 25, color: "#7c3aed" },  // deep purple
+    { label: "Over", min: 25, max: 30, color: "#f59e0b" },  // amber (new)
+    { label: "Obese", min: 30, max: 40, color: "#ff6b6b" },  // red
   ];
 
   function getCategory(b) {
