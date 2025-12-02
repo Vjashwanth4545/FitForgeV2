@@ -1,19 +1,17 @@
-// Fixed + Improved FitForge BMI Linear Gauge
-// All issues solved: correct pointer, correct spans, spacing, alignment, labels
-
 import React from "react";
 
 export default function BMIGauge({ bmi = null, width = "100%", height = "50px" }) {
-  const maxBMI = 40; // gauge max
+  const maxBMI = 40;
   const value = Math.min(Math.max(bmi || 0, 0), maxBMI);
   const percent = (value / maxBMI) * 100;
 
-  // WHO ranges
+  const safePercent = Math.min(Math.max(percent, 2.5), 97.5);
+
   const ranges = [
-    { label: "Under", min: 0, max: 18.5, color: "#a78bfa" }, // soft purple
-    { label: "Fit", min: 18.5, max: 25, color: "#7c3aed" },  // deep purple
-    { label: "Over", min: 25, max: 30, color: "#f59e0b" },  // amber (new)
-    { label: "Obese", min: 30, max: 40, color: "#ff6b6b" },  // red
+    { label: "Under", min: 0, max: 18.5, color: "#a78bfa" },
+    { label: "Fit", min: 18.5, max: 25, color: "#7c3aed" },
+    { label: "Over", min: 25, max: 30, color: "#f59e0b" },
+    { label: "Obese", min: 30, max: 40, color: "#ff6b6b" },
   ];
 
   function getCategory(b) {
@@ -25,14 +23,14 @@ export default function BMIGauge({ bmi = null, width = "100%", height = "50px" }
 
   return (
     <div
-  style={{
-    width: width || "100%",
-    maxWidth: "650px",     // keeps it perfectly aligned inside the card
-    margin: "0 auto",      // centers it
-    padding: "10px 0 25px",// tighter top spacing, cleaner fit
-    position: "relative",
-  }}
->
+      style={{
+        width,
+        maxWidth: "650px",
+        margin: "0 auto",
+        padding: "10px 0 25px",
+        position: "relative",
+      }}
+    >
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
         <div style={{ fontFamily: "Bebas Neue", fontSize: 22, color: "#7c3aed" }}>
           {bmi?.toFixed(2)} kg/m²
@@ -50,7 +48,6 @@ export default function BMIGauge({ bmi = null, width = "100%", height = "50px" }
           boxShadow: "0 8px 24px rgba(124,58,237,0.18)",
         }}
       >
-        {/* segments */}
         <div style={{ display: "flex", width: "100%", height: "100%" }}>
           {ranges.map((r, i) => (
             <div
@@ -64,11 +61,10 @@ export default function BMIGauge({ bmi = null, width = "100%", height = "50px" }
           ))}
         </div>
 
-        {/* pointer */}
         <div
           style={{
             position: "absolute",
-            left: `calc(${percent}% - 8px)`,
+            left: `calc(${safePercent}% - 8px)`,
             top: -8,
             transition: "left .5s ease-out",
             display: "flex",
@@ -103,7 +99,6 @@ export default function BMIGauge({ bmi = null, width = "100%", height = "50px" }
         </div>
       </div>
 
-      {/* labels */}
       <div
         style={{
           display: "flex",
