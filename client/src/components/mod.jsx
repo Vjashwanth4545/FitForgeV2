@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUtensils } from "@fortawesome/free-solid-svg-icons";  
 
 function Modules() {
   return (
@@ -17,7 +18,7 @@ function Modules() {
 
       <Link to="/diet" className="modbox">
         <p className="box-title">Diet Planner 
-        <FontAwesomeIcon icon={byPrefixAndName.fas['utensils']} />
+        <FontAwesomeIcon icon={faUtensils} />   
         </p>
         <p className="box-desc">Log your meals and monitor your daily caloric intake.</p>
       </Link>
