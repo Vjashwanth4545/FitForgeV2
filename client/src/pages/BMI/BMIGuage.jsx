@@ -24,7 +24,15 @@ export default function BMIGauge({ bmi = null, width = "100%", height = "50px" }
   }
 
   return (
-    <div style={{ width, padding: "30px 0" }}>
+    <div
+  style={{
+    width: width || "100%",
+    maxWidth: "650px",     // keeps it perfectly aligned inside the card
+    margin: "0 auto",      // centers it
+    padding: "10px 0 25px",// tighter top spacing, cleaner fit
+    position: "relative",
+  }}
+>
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
         <div style={{ fontFamily: "Bebas Neue", fontSize: 22, color: "#7c3aed" }}>
           {bmi?.toFixed(2)} kg/m²
