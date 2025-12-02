@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils,faNewspaper} from "@fortawesome/free-solid-svg-icons";  
+import { faUtensils,faNewspaper,faDumbbell} from "@fortawesome/free-solid-svg-icons";  
 
 function Modules() {
   return (
@@ -12,7 +12,9 @@ function Modules() {
       </Link>
 
       <Link to="/workout" className="modbox">
-        <p className="box-title">Workout Planner</p>
+        <p className="box-title">Workout Planner
+        <FontAwesomeIcon icon={faDumbbell} style={{ marginLeft: "95px" }} />
+        </p>
         <p className="box-desc">Customize your daily routine and log your sets and reps.</p>
       </Link>
 
