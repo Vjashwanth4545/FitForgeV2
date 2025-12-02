@@ -15,7 +15,9 @@ function Modules() {
       </Link>
 
       <Link to="/diet" className="modbox">
-        <p className="box-title">Diet Planner</p>
+        <p className="box-title">Diet Planner 
+        <FontAwesomeIcon icon={byPrefixAndName.fas['utensils']} />
+        </p>
         <p className="box-desc">Log your meals and monitor your daily caloric intake.</p>
       </Link>
 
