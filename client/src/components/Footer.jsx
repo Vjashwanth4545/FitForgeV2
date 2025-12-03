@@ -14,7 +14,9 @@ export default function Footer() {
             community and track your progress.
           </p>
           <p>
-            Frontend done by:Varadarajulu Jashwanth <a>245124733247@mvrsec.edu.in</a>
+            Frontend done by Varadarajulu Jashwanth 
+            Backend done by Tanush Saideep Amiesetty
+            DataBase done by Voggu Abhinay Vardhan
           </p>
         </div>
 
