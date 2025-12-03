@@ -10,6 +10,7 @@ const ContactUs = () => {
       paddingBottom: '40px'
     },
     navbar: {
+    
       backgroundColor: '#DDE3F8', // Light periwinkle nav color
       padding: '15px 40px',
       display: 'flex',
