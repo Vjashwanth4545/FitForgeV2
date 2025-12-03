@@ -34,7 +34,7 @@ const Navbar = ({ setIsLoggedIn }) => {  // ✅ now received
   href='/contract'
   
 >
-  Contact Us
+  Contact us
 </a>
        
           
