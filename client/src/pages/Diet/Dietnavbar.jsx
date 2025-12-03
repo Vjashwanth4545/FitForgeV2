@@ -17,7 +17,7 @@ const DietNavbar = () => {
 
       {/* LEFT */}
       <div className="diet-left">
-        <p className="diet-brand">FITFORGE:</p>
+        <p className="diet-brand">FITFORGE</p>
       </div>
 
       {/* CENTER */}

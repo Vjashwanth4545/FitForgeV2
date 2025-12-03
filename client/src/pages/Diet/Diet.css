@@ -63,6 +63,11 @@
   /* =========================================
      3. CARDS (FORCED UPDATE)
      ========================================= */
+     .title p {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 0;
+    }
   .diet-card, .diet-box, .diet-graph-box {
     background-color: var(--diet-card-bg) !important; /* Force Color Apply */
     padding: 30px;
@@ -102,6 +107,8 @@
   }
   
   .diet-brand { font-family: "Bebas Neue", sans-serif; font-size: 2rem; color: var(--brand-color); margin: 0; }
+  .diet-title { font-family: "Bebas Neue", sans-serif; font-size: 2rem; color: var(--brand-color); margin: 0; }
+
   .diet-nav-item { text-decoration: none; color: var(--text-main); font-weight: 500; margin-left: 20px; }
   
   /* =========================================
