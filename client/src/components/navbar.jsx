@@ -29,6 +29,7 @@ const Navbar = ({ setIsLoggedIn }) => {  // ✅ now received
   style={{
     fontFamily: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
   }}
+  href='/contract'
 >
   Contact Us
 </a>

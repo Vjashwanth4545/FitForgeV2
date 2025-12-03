@@ -8,6 +8,7 @@ import Diet from "./pages//Diet/Diet";
 import Report from "./pages/Report/Report";
 import LoginModal from "./components/LoginModal";
 import Auth from "./components/Auth";
+import ContactUs from "./components/contract";
 
 import "./pages/Home.css";
 import "./App.css";
@@ -48,6 +49,8 @@ const App = () => {
           <Route path="/report" element={<Report username={username}/>} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/profile" element={<Profile username={username}/>} />
+          <Route path="/contract" element={<ContactUs />} />
+
         </Routes>
       </div>
 
