@@ -145,19 +145,11 @@ const ContactUs = () => {
           </div>
         ))}
       </div>
-
-      {/* Optional: Actual Contact Form to make the page functional */}
-      <div style={styles.formContainer}>
-          <h2 style={{...styles.header, marginTop: '40px'}}>Get In Touch</h2>
-          <form onSubmit={(e) => e.preventDefault()}>
-              <input type="text" placeholder="Your Name" style={styles.input} />
-              <input type="email" placeholder="Your Email" style={styles.input} />
-              <textarea placeholder="Message" rows="4" style={styles.input}></textarea>
-              <button style={styles.button}>Send Message</button>
-          </form>
       </div>
-    </div>
-  );
+      );
+
+     
+  
 };
 
 export default ContactUs;
