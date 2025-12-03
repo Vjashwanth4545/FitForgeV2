@@ -125,7 +125,7 @@ const ContactUs = () => {
         <h1 style={styles.logo}>FITFORGE</h1>
         {/* You can add your existing Link components here */}
         <div style={{display: 'flex', gap: '20px', color: '#666', fontWeight: 'bold'}}>
-            <span>Home</span>
+            <a href='/'>Home</a>
             <span>Contact Us</span>
         </div>
       </nav>
