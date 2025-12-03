@@ -13,6 +13,9 @@ export default function Footer() {
             Forging a better version of you, one rep at a time. Join the 
             community and track your progress.
           </p>
+          <p>
+            Frontend done by:Varadarajulu Jashwanth <a>245124733247@mvrsec.edu.in</a>
+          </p>
         </div>
 
         <div className="footer-section">
