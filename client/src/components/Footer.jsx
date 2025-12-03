@@ -15,9 +15,10 @@ export default function Footer() {
           </p>
           <p>
             Frontend done by Varadarajulu Jashwanth 
-            Backend done by Tanush Saideep Amiesetty
-            DataBase done by Voggu Abhinay Vardhan
           </p>
+          <p>Backend done by Tanush Saideep Amiesetty</p>
+          <p> DataBase done by Voggu Abhinay Vardhan</p>
+          
         </div>
 
         <div className="footer-section">
