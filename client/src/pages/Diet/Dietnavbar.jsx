@@ -32,18 +32,15 @@ const DietNavbar = () => {
         <Link to="/contact" className="diet-nav-item">Contact Us</Link>
 
        
-
+        <FontAwesomeIcon
+          icon={theme === "light" ? faMoon : faSun}
+          size="lg"
+          className="nav-icon"
+          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+        />
         <FontAwesomeIcon icon={faUser} size="lg" className="diet-icon" />
 
-        <FontAwesomeIcon
-          icon={faRightFromBracket}
-          size="lg"
-          className="diet-icon diet-logout"
-          onClick={() => {
-            localStorage.setItem("isLoggedIn", "false");
-            window.location.reload();
-          }}
-        />
+       
 
       </div>
 
