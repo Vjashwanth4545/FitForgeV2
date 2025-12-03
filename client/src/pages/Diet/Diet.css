@@ -106,10 +106,10 @@
     box-sizing: border-box;
   }
   
-  .diet-brand { font-family: "Bebas Neue", sans-serif; font-size: 2rem; color: var(--brand-color); margin: 0; }
+  .diet-brand { font-family: "Bebas Neue", sans-serif; font-size: 2rem; color: var(--brand-color); margin: 0;margin-left:10px }
   .diet-title { font-family: "Bebas Neue", sans-serif; font-size: 2rem; color: var(--brand-color); margin: 0; }
 
-  .diet-nav-item { text-decoration: none; color: var(--text-main); font-weight: 500; margin-left: 20px; }
+  .diet-nav-item { text-decoration: none; color: var(--brand-color); font-weight: 500; margin-left: 20px; }
   
   /* =========================================
      5. INPUTS & BUTTONS
