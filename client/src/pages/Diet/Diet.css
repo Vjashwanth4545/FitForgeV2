@@ -92,19 +92,27 @@
   /* =========================================
      4. NAVBAR
      ========================================= */
-  .diet-navbar {
-    position: fixed;
-    top: 0; left: 0; width: 100%;
-    padding: 15px 40px;
-    background: var(--bg-nav);
-    color: var(--text-main);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 999;
-    box-shadow: 0 2px 15px var(--shadow);
-    box-sizing: border-box;
-  }
+     .bmi-navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 40px;
+      background: var(--navbar-bg);
+      color: var(--navbar-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* LEFT */
+    .brand {
+      font-family: "Bebas Neue";
+      font-size: 2.4rem;
+      margin: 0;
+    }
+    
   
   .diet-brand { font-family: "Bebas Neue", sans-serif; font-size: 2rem; color: var(--brand-color); margin: 0;margin-left:40px }
   .diet-title { font-family: "Bebas Neue", sans-serif; font-size: 2rem; color: var(--brand-color); margin: 0; }

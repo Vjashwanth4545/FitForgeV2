@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faSun, faMoon, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import "./Diet.css"
 
 const DietNavbar = () => {
 
@@ -13,34 +12,41 @@ const DietNavbar = () => {
   }, [theme]);
 
   return (
-    <nav className="diet-navbar">
+    <nav className="bmi-navbar">
 
       {/* LEFT */}
-      <div className="diet-left">
-        <p className="diet-brand">FITFORGE</p>
+      <div className="left">
+        <p className="brand">FITFORGE</p>
       </div>
 
       {/* CENTER */}
-      <div className="diet-center">
-        <p className="diet-title">DIET PLANNER</p>
+      <div className="center">
+        <p className="page-title">DIET PLANNER</p>
       </div>
 
       {/* RIGHT */}
-      <div className="diet-right">
+      <div className="right">
+        <Link to="/" className="nav-item">Home</Link>
+        <Link to="/contact" className="nav-item">Contact Us</Link>
 
-        <Link to="/" className="diet-nav-item">Home</Link>
-        <Link to="/contact" className="diet-nav-item">Contact Us</Link>
-
-       
         <FontAwesomeIcon
           icon={theme === "light" ? faMoon : faSun}
           size="lg"
           className="nav-icon"
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         />
-        <FontAwesomeIcon icon={faUser} size="lg" className="diet-icon" />
 
-       
+        <FontAwesomeIcon icon={faUser} size="lg" className="nav-icon" />
+
+        <FontAwesomeIcon
+          icon={faRightFromBracket}
+          size="lg"
+          className="nav-icon logout"
+          onClick={() => {
+            localStorage.setItem("isLoggedIn", "false");
+            window.location.reload();
+          }}
+        />
 
       </div>
 
