@@ -108,7 +108,7 @@ const ContactUs = () => {
     },
     {
       role: "Backend Developer",
-      name: "Tanush Saideep Amiesetty",
+      name: "Tanush Saideep Aeimsetty",
       icon: "⚙️"
     },
     {
