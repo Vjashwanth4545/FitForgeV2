@@ -12,6 +12,7 @@ const ContactUs = () => {
     },
     section: {
       maxWidth: '900px',
+      marginTop:'200px',
       margin: '0 auto',
       padding: '0 20px'
     },
