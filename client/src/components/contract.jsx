@@ -4,116 +4,100 @@ import Footer from './Footer';
 
 const ContactUs = () => {
   const styles = {
-    pageContainer: {
+    page: {
       backgroundColor: '#E6F7F8',
       minHeight: '100vh',
-      fontFamily: 'Arial, sans-serif',
-      paddingBottom: '40px'
+      fontFamily: 'Arial, sans-serif'
     },
-    section: {
-      maxWidth: '900px',
-      marginTop:'200px',
+    container: {
+      maxWidth: '1000px',
       margin: '0 auto',
-      padding: '0 20px'
+      padding: '40px 20px'
     },
     name: {
-      textAlign: 'center',
-      fontSize: '30px',
+      fontSize: '32px',
       fontWeight: '900',
-      marginTop: '40px'
+      textAlign: 'center',
+      marginBottom: '6px'
     },
-    title: {
+    roleTitle: {
       textAlign: 'center',
       fontSize: '18px',
       color: '#555',
       marginBottom: '40px'
     },
+    sectionTitle: {
+      fontSize: '18px',
+      fontWeight: '800',
+      letterSpacing: '1px',
+      marginBottom: '16px',
+      marginTop: '40px'
+    },
     divider: {
       height: '1px',
       backgroundColor: '#cfd8dc',
-      margin: '40px 0'
-    },
-    sectionTitle: {
-      fontSize: '20px',
-      fontWeight: '800',
-      marginBottom: '16px',
-      textTransform: 'uppercase',
-      letterSpacing: '1px'
+      margin: '20px 0'
     },
     rolesRow: {
       display: 'flex',
       justifyContent: 'space-between',
       flexWrap: 'wrap',
       gap: '20px',
-      fontSize: '16px',
       fontWeight: '600'
     },
-    role: {
+    roleItem: {
       display: 'flex',
       alignItems: 'center',
       gap: '10px'
     },
-    techList: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: '14px',
-      fontSize: '15px',
-      fontWeight: '600',
-      color: '#4F46E5'
+    techGroup: {
+      marginBottom: '20px'
     },
-    tech: {
-      padding: '4px 0'
+    techLabel: {
+      fontWeight: '700',
+      marginBottom: '6px'
+    },
+    techList: {
+      color: '#4F46E5',
+      fontWeight: '600'
     }
   };
 
-  const roles = [
-    { label: 'Frontend Development', icon: '💻' },
-    { label: 'Backend Development', icon: '⚙️' },
-    { label: 'Database & Deployment', icon: '🗄️' }
-  ];
-
-  const languages = [
-    'HTML',
-    'CSS',
-    'JavaScript',
-    'React',
-    'Node.js',
-    'Express.js',
-    'MongoDB'
-  ];
-
   return (
-    <div style={styles.pageContainer}>
+    <div style={styles.page}>
       <Navbar />
 
-      <div style={styles.section}>
+      <div style={styles.container}>
         {/* NAME */}
         <div style={styles.name}>Varadarajulu Jashwanth</div>
-        <div style={styles.title}>Solo Full-Stack Developer</div>
-
-        <div style={styles.divider}></div>
+        <div style={styles.roleTitle}>Solo Full-Stack Developer</div>
 
         {/* ROLES */}
-        <div style={styles.sectionTitle}>Roles</div>
+        <div style={styles.sectionTitle}>ROLES</div>
         <div style={styles.rolesRow}>
-          {roles.map((r, i) => (
-            <div key={i} style={styles.role}>
-              <span>{r.icon}</span>
-              <span>{r.label}</span>
-            </div>
-          ))}
+          <div style={styles.roleItem}>💻 Frontend Development</div>
+          <div style={styles.roleItem}>⚙ Backend Development</div>
+          <div style={styles.roleItem}>🗄 Database & Deployment</div>
         </div>
 
         <div style={styles.divider}></div>
 
         {/* TECH STACK */}
-        <div style={styles.sectionTitle}>Languages & Technologies</div>
-        <div style={styles.techList}>
-          {languages.map((tech, i) => (
-            <span key={i} style={styles.tech}>
-              {tech}
-            </span>
-          ))}
+        <div style={styles.sectionTitle}>LANGUAGES & TECHNOLOGIES</div>
+
+        <div style={styles.techGroup}>
+          <div style={styles.techLabel}>Frontend</div>
+          <div style={styles.techList}>HTML · CSS · JavaScript · React</div>
+        </div>
+
+        <div style={styles.techGroup}>
+          <div style={styles.techLabel}>Backend</div>
+          <div style={styles.techList}>Node.js · Express.js · REST APIs</div>
+        </div>
+
+        <div style={styles.techGroup}>
+          <div style={styles.techLabel}>Database & Tools</div>
+          <div style={styles.techList}>MongoDB · Git · Vercel</div>
         </div>
       </div>
 
