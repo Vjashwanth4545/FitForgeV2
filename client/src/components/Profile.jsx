@@ -71,6 +71,14 @@ const Profile = ({ username }) => {
   return (
     <div className="signup-wrapper">
       <div className="signup-card">
+      <a
+  style={{
+    fontFamily: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+  }}
+    href='/'
+>
+  Home
+  </a>
         <h2>Your Profile</h2>
 
         <input value={editableData.username} disabled />
