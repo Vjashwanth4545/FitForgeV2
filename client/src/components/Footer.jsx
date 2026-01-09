@@ -14,10 +14,8 @@ export default function Footer() {
             community and track your progress.
           </p>
           <p>
-            Frontend done by Varadarajulu Jashwanth 
+            Done by Varadarajulu Jashwanth 
           </p>
-          <p>Backend done by Tanush Saideep Amiesetty</p>
-          <p> DataBase done by Voggu Abhinay Vardhan</p>
           
         </div>
 
