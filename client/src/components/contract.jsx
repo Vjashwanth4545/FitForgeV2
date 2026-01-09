@@ -9,11 +9,11 @@ const ContactUs = () => {
       minHeight: '100vh',
       fontFamily: 'Arial, sans-serif'
     },
-    container: {
-      maxWidth: '1000px',
-      margin: '0 auto',
-      padding: '40px 20px'
-    },
+      container: {
+        maxWidth: '1000px',
+        margin: '0 auto',
+        padding: '120px 20px 40px' // ⬅ top padding fixes navbar overlap
+      },
     name: {
       fontSize: '32px',
       fontWeight: '900',
