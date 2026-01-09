@@ -1,5 +1,7 @@
 import React from 'react';
 import Navbar from './navbar';
+import Footer from './Footer';
+
 const ContactUs = () => {
   const styles = {
     pageContainer: {
@@ -8,114 +10,113 @@ const ContactUs = () => {
       fontFamily: 'Arial, sans-serif',
       paddingBottom: '40px'
     },
-    navbar: {
-      backgroundColor: '#DDE3F8',
-      padding: '15px 40px',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginBottom: '40px'
-    },
-    logo: {
-      color: '#7C8DB5',
-      fontSize: '28px',
-      fontWeight: '900',
-      letterSpacing: '1px',
-      fontFamily: 'Impact, sans-serif',
-      textTransform: 'uppercase'
-    },
-    header: {
-      textAlign: 'center',
-      fontSize: '26px',
-      fontWeight: '900',
-      marginBottom: '10px'
-    },
-    subHeader: {
-      textAlign: 'center',
-      fontSize: '18px',
-      color: '#555',
-      marginBottom: '30px'
-    },
-    gridContainer: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-      gap: '24px',
-      maxWidth: '1000px',
+    section: {
+      maxWidth: '900px',
       margin: '0 auto',
       padding: '0 20px'
     },
-    card: {
-      backgroundColor: '#fff',
-      borderRadius: '20px',
-      padding: '30px',
-      boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
+    name: {
+      textAlign: 'center',
+      fontSize: '30px',
+      fontWeight: '900',
+      marginTop: '40px'
     },
-    cardTitle: {
+    title: {
+      textAlign: 'center',
       fontSize: '18px',
+      color: '#555',
+      marginBottom: '40px'
+    },
+    divider: {
+      height: '1px',
+      backgroundColor: '#cfd8dc',
+      margin: '40px 0'
+    },
+    sectionTitle: {
+      fontSize: '20px',
       fontWeight: '800',
+      marginBottom: '16px',
       textTransform: 'uppercase',
-      marginBottom: '12px'
+      letterSpacing: '1px'
     },
-    cardBody: {
-      fontFamily: '"Times New Roman", Times, serif',
-      fontSize: '18px'
+    rolesRow: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      flexWrap: 'wrap',
+      gap: '20px',
+      fontSize: '16px',
+      fontWeight: '600'
     },
-    techGrid: {
+    role: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '10px'
+    },
+    techList: {
       display: 'flex',
       flexWrap: 'wrap',
-      gap: '12px',
-      marginTop: '10px'
+      gap: '14px',
+      fontSize: '15px',
+      fontWeight: '600',
+      color: '#4F46E5'
     },
-    techBox: {
-      backgroundColor: '#EEF2FF',
-      color: '#4F46E5',
-      padding: '8px 14px',
-      borderRadius: '12px',
-      fontWeight: '700',
-      fontSize: '14px'
+    tech: {
+      padding: '4px 0'
     }
   };
 
   const roles = [
-    { title: "Frontend Development", icon: "💻" },
-    { title: "Backend Development", icon: "⚙️" },
-    { title: "Database & Deployment", icon: "🗄️" }
+    { label: 'Frontend Development', icon: '💻' },
+    { label: 'Backend Development', icon: '⚙️' },
+    { label: 'Database & Deployment', icon: '🗄️' }
   ];
 
   const languages = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'React',
+    'Node.js',
+    'Express.js',
+    'MongoDB'
   ];
 
   return (
     <div style={styles.pageContainer}>
       <Navbar />
-     
 
-      {/* NAME AT TOP */}
-      <h2 style={styles.header}>Varadarajulu Jashwanth</h2>
-      <p style={styles.subHeader}>Solo Full-Stack Developer</p>
+      <div style={styles.section}>
+        {/* NAME */}
+        <div style={styles.name}>Varadarajulu Jashwanth</div>
+        <div style={styles.title}>Solo Full-Stack Developer</div>
 
-      {/* ROLES */}
+        <div style={styles.divider}></div>
 
-      {/* LANGUAGES / TECH STACK */}
-      <div style={{ maxWidth: '1000px', margin: '40px auto 0', padding: '0 20px' }}>
-        <div style={styles.card}>
-          <div style={styles.cardTitle}>Languages & Technologies</div>
-          <div style={styles.techGrid}>
-            {languages.map((tech, index) => (
-              <div key={index} style={styles.techBox}>
-                {tech}
-              </div>
-            ))}
-          </div>
+        {/* ROLES */}
+        <div style={styles.sectionTitle}>Roles</div>
+        <div style={styles.rolesRow}>
+          {roles.map((r, i) => (
+            <div key={i} style={styles.role}>
+              <span>{r.icon}</span>
+              <span>{r.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div style={styles.divider}></div>
+
+        {/* TECH STACK */}
+        <div style={styles.sectionTitle}>Languages & Technologies</div>
+        <div style={styles.techList}>
+          {languages.map((tech, i) => (
+            <span key={i} style={styles.tech}>
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
