@@ -22,55 +22,75 @@ const ContactUs = () => {
       fontWeight: '900',
       letterSpacing: '1px',
       fontFamily: 'Impact, sans-serif',
-      textTransform: 'uppercase',
-      margin: 0
+      textTransform: 'uppercase'
     },
     header: {
       textAlign: 'center',
-      color: '#1a1a1a',
-      fontSize: '24px',
-      fontWeight: '800',
-      textTransform: 'uppercase',
-      marginBottom: '30px',
-      letterSpacing: '0.5px'
+      fontSize: '26px',
+      fontWeight: '900',
+      marginBottom: '10px'
+    },
+    subHeader: {
+      textAlign: 'center',
+      fontSize: '18px',
+      color: '#555',
+      marginBottom: '30px'
     },
     gridContainer: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
       gap: '24px',
       maxWidth: '1000px',
       margin: '0 auto',
       padding: '0 20px'
     },
     card: {
-      backgroundColor: '#ffffff',
+      backgroundColor: '#fff',
       borderRadius: '20px',
       padding: '30px',
       boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
     },
     cardTitle: {
-      fontSize: '20px',
+      fontSize: '18px',
       fontWeight: '800',
       textTransform: 'uppercase',
-      marginBottom: '10px',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '10px',
-      color: '#000'
+      marginBottom: '12px'
     },
     cardBody: {
       fontFamily: '"Times New Roman", Times, serif',
-      fontSize: '18px',
-      color: '#333',
-      lineHeight: '1.5'
+      fontSize: '18px'
+    },
+    techGrid: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '12px',
+      marginTop: '10px'
+    },
+    techBox: {
+      backgroundColor: '#EEF2FF',
+      color: '#4F46E5',
+      padding: '8px 14px',
+      borderRadius: '12px',
+      fontWeight: '700',
+      fontSize: '14px'
     }
   };
 
-  // SOLO DEVELOPER ROLES
   const roles = [
-    { role: "Frontend Development", icon: "💻" },
-    { role: "Backend Development", icon: "⚙️" },
-    { role: "Database & Deployment", icon: "🗄️" }
+    { title: "Frontend Development", icon: "💻" },
+    { title: "Backend Development", icon: "⚙️" },
+    { title: "Database & Deployment", icon: "🗄️" }
+  ];
+
+  const languages = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "REST APIs"
   ];
 
   return (
@@ -83,20 +103,34 @@ const ContactUs = () => {
         </div>
       </nav>
 
-      <h2 style={styles.header}>Meet the Creator</h2>
+      {/* NAME AT TOP */}
+      <h2 style={styles.header}>Varadarajulu Jashwanth</h2>
+      <p style={styles.subHeader}>Solo Full-Stack Developer • Built FitForge End-to-End</p>
 
+      {/* ROLES */}
       <div style={styles.gridContainer}>
-        {roles.map((item, index) => (
+        {roles.map((role, index) => (
           <div key={index} style={styles.card}>
             <div style={styles.cardTitle}>
-              <span>{item.role}</span>
-              <span>{item.icon}</span>
+              {role.title} {role.icon}
             </div>
-            <p style={styles.cardBody}>
-              Varadarajulu Jashwanth
-            </p>
+            <p style={styles.cardBody}>Varadarajulu Jashwanth</p>
           </div>
         ))}
+      </div>
+
+      {/* LANGUAGES / TECH STACK */}
+      <div style={{ maxWidth: '1000px', margin: '40px auto 0', padding: '0 20px' }}>
+        <div style={styles.card}>
+          <div style={styles.cardTitle}>Languages & Technologies</div>
+          <div style={styles.techGrid}>
+            {languages.map((tech, index) => (
+              <div key={index} style={styles.techBox}>
+                {tech}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

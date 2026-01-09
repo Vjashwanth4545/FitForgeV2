@@ -14,7 +14,7 @@ export default function Footer() {
             community and track your progress.
           </p>
           <p>
-            Done by Varadarajulu Jashwanth 
+          Solo full-stack project designed, developed, and deployed by Varadarajulu Jashwanth. 
           </p>
           
         </div>
