@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Navbar from './navbar';
 const ContactUs = () => {
   const styles = {
     pageContainer: {
@@ -90,34 +90,18 @@ const ContactUs = () => {
     "Node.js",
     "Express.js",
     "MongoDB",
-    "REST APIs"
   ];
 
   return (
     <div style={styles.pageContainer}>
-      <nav style={styles.navbar}>
-        <h1 style={styles.logo}>FITFORGE</h1>
-        <div style={{ display: 'flex', gap: '20px', fontWeight: 'bold' }}>
-          <a href="/">Home</a>
-          <span>Contact Us</span>
-        </div>
-      </nav>
+      <Navbar />
+     
 
       {/* NAME AT TOP */}
       <h2 style={styles.header}>Varadarajulu Jashwanth</h2>
-      <p style={styles.subHeader}>Solo Full-Stack Developer • Built FitForge End-to-End</p>
+      <p style={styles.subHeader}>Solo Full-Stack Developer</p>
 
       {/* ROLES */}
-      <div style={styles.gridContainer}>
-        {roles.map((role, index) => (
-          <div key={index} style={styles.card}>
-            <div style={styles.cardTitle}>
-              {role.title} {role.icon}
-            </div>
-            <p style={styles.cardBody}>Varadarajulu Jashwanth</p>
-          </div>
-        ))}
-      </div>
 
       {/* LANGUAGES / TECH STACK */}
       <div style={{ maxWidth: '1000px', margin: '40px auto 0', padding: '0 20px' }}>
