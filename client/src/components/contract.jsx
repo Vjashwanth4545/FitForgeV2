@@ -70,7 +70,7 @@ const ContactUs = () => {
       <div style={styles.container}>
         {/* NAME */}
         <div style={styles.name}>Varadarajulu Jashwanth</div>
-        <div style={styles.roleTitle}>Solo Full-Stack Developer</div>
+        <div style={styles.roleTitle}>Full-Stack Developer</div>
 
         {/* ROLES */}
         <div style={styles.sectionTitle}>ROLES</div>
